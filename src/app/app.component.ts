@@ -67,7 +67,10 @@ import {Product} from "./model/product";
 
               <button
                 class="btn icon-circle-sm px-1 ms-2 shadow-lg"
-                style="color: #222"
+                style="color: #bbb"
+                [style.background-color]="selectedColor  || '#ccc'"
+                [disabled]="!selectedColor"
+                (click)="addToCartHandler({ product: product, color: selectedColor })"
               >
                 <i class="fas fa-cart-plus text-white"></i>
               </button>
@@ -108,6 +111,15 @@ export class AppComponent {
    */
   constructor() {
     console.log(this.product)
+  }
+
+  /**
+   * Add the passed product and its color to the cart.
+   *
+   * @param params
+   */
+  addToCartHandler(params: { product: Product; color: string | null }): void {
+    console.log(params.product, params.color)
   }
 
 }
