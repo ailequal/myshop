@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
+import {NgForm, NgModel} from "@angular/forms";
 import {Hero} from "./model/hero";
-import {Product} from "./model/product";
 import {News} from "./model/news";
+import {Product} from "./model/product";
+import {User} from "./model/user";
 
 @Component({
   selector: 'ac-root',
@@ -99,7 +101,7 @@ import {News} from "./model/news";
       </div>
 
       <!--news container-->
-      <div class="row 3 mt-5 mb-3">
+      <div class="row 3 mt-5">
         <!--news loop-->
         <div class="col-sm-6" *ngFor="let n of news">
           <!--news-->
@@ -116,13 +118,22 @@ import {News} from "./model/news";
         </div>
       </div>
 
+      <!--template driven form container-->
+      <div class="row 3 mt-5 mb-3">
+        <!--template driven form-->
+        <form #f="ngForm" (ngSubmit)="onSubmit(f, inputRef)">
+          <input #inputRef="ngModel" [ngModel]="user.name" name="userName">
+          <button type="submit" [disabled]="f.invalid">SEND</button>
+        </form>
+      </div>
+
     </div>
   `,
   styles: [`
     .card img:hover {
-      -webkit-box-shadow: 0px 0px 100px 0px rgb(186, 186, 186);
-      -moz-box-shadow: 0px 0px 100px 0px rgb(186, 186, 186);
-      box-shadow: 0px 0px 100px 0px rgb(186, 186, 186);
+      -webkit-box-shadow: 0 0 100px 0 rgb(186, 186, 186);
+      -moz-box-shadow: 0 0 100px 0 rgb(186, 186, 186);
+      box-shadow: 0 0 100px 0 rgb(186, 186, 186);
     }
   `]
 })
@@ -160,7 +171,6 @@ export class AppComponent {
       "colors": [
         "dimgray", "darkgray"
       ]
-
     },
     {
       "id": 4,
@@ -174,7 +184,6 @@ export class AppComponent {
       "colors": [
         "black", "red", "lightgreen", "midnightblue", "mediumpurple"
       ]
-
     }
   ];
 
@@ -193,6 +202,11 @@ export class AppComponent {
     }
   ];
 
+  user: User = {
+    name: 'Donald',
+    surname: 'Duck'
+  }
+
   // TODO: The selected color is the same for all the available products.
   //  This bug will be fixed later on. Ignore it for now.
   selectedColor: string | null = null;
@@ -201,7 +215,6 @@ export class AppComponent {
    * The constructor method.
    */
   constructor() {
-    console.log(this.products)
   }
 
   /**
@@ -211,6 +224,19 @@ export class AppComponent {
    */
   addToCartHandler(params: { product: Product; color: string | null }): void {
     console.log(params.product, params.color)
+  }
+
+  /**
+   * Handles the form submission.
+   *
+   * @param f
+   * @param inputRef
+   */
+  onSubmit(f: NgForm, inputRef: NgModel) {
+    console.log(f.value.userName)
+    console.log(inputRef.dirty)
+
+    this.user.name = 'Scrooge'
   }
 
 }
