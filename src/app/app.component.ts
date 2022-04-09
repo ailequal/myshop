@@ -36,9 +36,9 @@ import {Product} from "./model/product";
           </div>
           <div class="card-body text-center">
             <h5 class="card-title">
-              Label Title
+              {{product.label}}
             </h5>
-            <p class="card-text text-secondary">Label Description</p>
+            <p class="card-text text-secondary">{{product.description}}</p>
           </div>
 
           <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
