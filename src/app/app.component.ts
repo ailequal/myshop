@@ -47,12 +47,14 @@ import {Product} from "./model/product";
           <!--colors-->
           <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
             <div
-              *ngFor="let color of product.colors"
               class="mx-1 mb-3 round-border shadow-sm"
               style="width: 30px; height: 30px; border: 1px solid #fff"
               role="button"
+              *ngFor="let color of product.colors"
+              (click)="selectedColor = color"
               [style.backgroundColor]="color"
-              (click)="selectColor(product, color)"
+              [style.border-width.px]="selectedColor === color ? 5 : 1"
+              [style.border-color]="selectedColor === color ? 'orange' : '#ccc'"
             ></div>
           </div>
 
@@ -99,19 +101,13 @@ export class AppComponent {
     ]
   }
 
+  selectedColor: string | null = null;
+
   /**
    * The constructor method.
    */
   constructor() {
     console.log(this.product)
-  }
-
-  /**
-   *
-   */
-  selectColor(product: Product, color: string) {
-    console.log(product)
-    console.log(color)
   }
 
 }
