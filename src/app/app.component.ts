@@ -55,7 +55,7 @@ import {Product} from "./model/product";
 
           </div>
           <div class="card-footer d-flex justify-content-between align-items-center">
-            <div class="h5 text-secondary">300 € + vat</div>
+            <div class="h5 text-secondary">{{product.price}} € + vat</div>
 
             <div>
               <span>select color</span>
