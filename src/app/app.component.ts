@@ -7,7 +7,7 @@ import {News} from "./model/news";
   selector: 'ac-root',
   template: `
     <!--main container-->
-    <div class="container mx-auto p-4 row">
+    <div class="container">
 
       <!--hero-->
       <div class="card round-border overflow-hidden mt-3" style="height: 300px">
@@ -99,7 +99,7 @@ import {News} from "./model/news";
       </div>
 
       <!--news container-->
-      <div class="row 3 mt-5">
+      <div class="row 3 mt-5 mb-3">
         <!--news loop-->
         <div class="col-sm-6" *ngFor="let n of news">
           <!--news-->
