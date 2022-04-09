@@ -10,6 +10,7 @@ import {Product} from "./model/product";
 
         <!--card-->
         <div class="card h-100 round-border shadow-lg">
+          <!--image-->
           <div class="position-relative">
             <img
               class="card-img-top p-3 round-border "
@@ -34,6 +35,8 @@ import {Product} from "./model/product";
               </div>
             </div>
           </div>
+
+          <!--title and description-->
           <div class="card-body text-center">
             <h5 class="card-title">
               {{product.label}}
@@ -41,19 +44,18 @@ import {Product} from "./model/product";
             <p class="card-text text-secondary">{{product.description}}</p>
           </div>
 
+          <!--colors-->
           <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
             <div
+              *ngFor="let color of product.colors"
               class="mx-1 mb-3 round-border shadow-sm"
-              style="width: 30px; height: 30px; border: 1px solid #fff; background-color: lightblue"
+              style="width: 30px; height: 30px; border: 1px solid #fff"
               role="button"
+              [style.backgroundColor]="color"
             ></div>
-            <div
-              class="mx-1 mb-3 round-border shadow-sm"
-              style="width: 30px; height: 30px; border: 1px solid #fff; background-color: lightseagreen"
-              role="button"
-            ></div>
-
           </div>
+
+          <!--footer-->
           <div class="card-footer d-flex justify-content-between align-items-center">
             <div class="h5 text-secondary">{{product.price}} € + vat</div>
 
@@ -69,6 +71,7 @@ import {Product} from "./model/product";
             </div>
           </div>
         </div>
+
       </div>
     </div>
   `,
