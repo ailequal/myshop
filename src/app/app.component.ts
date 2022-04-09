@@ -1,31 +1,85 @@
-import {Component, ViewChild, ElementRef} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'ac-root',
   template: `
-    <button #buttonRef class="btn btn-primary">
-      <i class="fab fa-shopify"></i>
-    </button>
+    <!--container-->
+    <div class="container mt-3 row">
+      <div class="col-4">
+
+        <!--card-->
+        <div class="card h-100 round-border shadow-lg">
+          <div class="position-relative">
+            <img
+              class="card-img-top p-3 round-border "
+              src="https://res.cloudinary.com/my-notes-demo/image/upload/v1627760417/academy/imac.png"
+              alt="xMac"
+              role="button"
+            >
+            <div class="position-absolute top-50 start-50 w-75 translate-middle pe-none">
+              <div class="row  row-cols-3 g-2 rounded p-2 text-white" style="background: rgba(0,0,0,0.5)">
+                <div class="col text-center">
+                  <i class="fas fa-memory"></i>
+                  1Gb
+                </div>
+
+                <div class="col text-center">
+                  <i class="fas fa-sim-card"></i>
+                  16Gb
+                </div>
+                <div class="col text-center">
+                  <i class="fas fa-mobile-alt"></i>
+                  7''
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">
+              Label Title
+            </h5>
+            <p class="card-text text-secondary">Label Description</p>
+          </div>
+
+          <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
+            <div
+              class="mx-1 mb-3 round-border shadow-sm"
+              style="width: 30px; height: 30px; border: 1px solid #fff; background-color: lightblue"
+              role="button"
+            ></div>
+            <div
+              class="mx-1 mb-3 round-border shadow-sm"
+              style="width: 30px; height: 30px; border: 1px solid #fff; background-color: lightseagreen"
+              role="button"
+            ></div>
+
+          </div>
+          <div class="card-footer d-flex justify-content-between align-items-center">
+            <div class="h5 text-secondary">300 € + vat</div>
+
+            <div>
+              <span>select color</span>
+
+              <button
+                class="btn icon-circle-sm px-1 ms-2 shadow-lg"
+                style="color: #222"
+              >
+                <i class="fas fa-cart-plus text-white"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   `,
+  styles: [`
+    .card img:hover {
+      -webkit-box-shadow: 0px 0px 100px 0px rgb(186, 186, 186);
+      -moz-box-shadow: 0px 0px 100px 0px rgb(186, 186, 186);
+      box-shadow: 0px 0px 100px 0px rgb(186, 186, 186);
+    }
+  `]
 })
 export class AppComponent {
-
-  // The ViewChild decorator is retrieving the buttonRef from the template HTML
-  // and setting it as a property for this class. The generic ElementRef is assigned
-  // as HTMLButtonElement or undefined, since until the component is fully rendered,
-  // we won't be able to access the property for real.
-  @ViewChild('buttonRef') buttonInput: ElementRef<HTMLButtonElement> | undefined;
-
-  constructor() {
-    console.log(this.buttonInput?.constructor?.name)
-    console.log(this.buttonInput) // At the start is undefined.
-    console.log(this.buttonInput?.nativeElement) // Same of course.
-
-    setTimeout(() => {
-      // When the component is fully rendered, we have our property ready to used.
-      console.log(this.buttonInput?.constructor?.name)
-      console.log(this.buttonInput?.nativeElement)
-    }, 3000)
-  }
 
 }
