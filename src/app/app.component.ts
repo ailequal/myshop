@@ -13,24 +13,23 @@ import {Product} from "./model/product";
           <div class="position-relative">
             <img
               class="card-img-top p-3 round-border "
-              src="https://res.cloudinary.com/my-notes-demo/image/upload/v1627760417/academy/imac.png"
-              alt="xMac"
+              [src]="product.image" [alt]="product.label"
               role="button"
             >
             <div class="position-absolute top-50 start-50 w-75 translate-middle pe-none">
               <div class="row  row-cols-3 g-2 rounded p-2 text-white" style="background: rgba(0,0,0,0.5)">
                 <div class="col text-center">
                   <i class="fas fa-memory"></i>
-                  1Gb
+                  {{product.memory / 1000 }}
                 </div>
 
                 <div class="col text-center">
                   <i class="fas fa-sim-card"></i>
-                  16Gb
+                  {{product.storage / 1000}}
                 </div>
                 <div class="col text-center">
                   <i class="fas fa-mobile-alt"></i>
-                  7''
+                  {{product.display}}''
                 </div>
               </div>
             </div>
