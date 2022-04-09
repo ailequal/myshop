@@ -5,7 +5,7 @@ import {Product} from "./model/product";
   selector: 'ac-root',
   template: `
     <!--container-->
-    <div class="container mt-3 row">
+    <div class="container mx-auto p-4 row">
       <div class="col-4">
 
         <!--card-->
