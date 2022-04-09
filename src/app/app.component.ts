@@ -1,16 +1,17 @@
 import {Component} from '@angular/core';
 import {Product} from "./model/product";
+import {News} from "./model/news";
 
 @Component({
   selector: 'ac-root',
   template: `
-    <!--container-->
+    <!--main container-->
     <div class="container mx-auto p-4 row">
-      <div class="row row-cols-1 row-cols-lg-2  row-cols-xl-3 mt-5">
 
+      <!--cards container-->
+      <div class="row row-cols-1 row-cols-lg-2  row-cols-xl-3 mt-5">
         <!--cards loop-->
         <div class="col" *ngFor="let product of products">
-
           <!--card-->
           <div class="card h-100 round-border shadow-lg">
             <!--image-->
@@ -80,10 +81,40 @@ import {Product} from "./model/product";
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
+      <!--news-->
+      <div class="row 3 mt-5">
+        <!--news 1-->
+        <div class="col-sm-6">
+          <div class="card round-border ">
+            <div class="card-body">
+              <h5 class="card-title">title</h5>
+              <p class="card-text">description</p>
+              <a href="http://www.google.com" target="_blank" class="btn btn-dark round-border">
+                <i class="fas fa-external-link-alt"></i>
+                Visit
+              </a>
+            </div>
+          </div>
         </div>
 
+        <!--news 2-->
+        <div class="col-sm-6">
+          <div class="card round-border ">
+            <div class="card-body">
+              <h5 class="card-title">title</h5>
+              <p class="card-text">description</p>
+              <a href="http://www.google.com" target="_blank" class="btn btn-dark round-border">
+                <i class="fas fa-external-link-alt"></i>
+                Visit
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
   `,
   styles: [`
@@ -140,6 +171,8 @@ export class AppComponent {
     }
   ];
 
+  // TODO: The selected color is the same for all the available products.
+  //  This bug will be fixed later on. Ignore it for now.
   selectedColor: string | null = null;
 
   /**
