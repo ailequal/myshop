@@ -52,6 +52,7 @@ import {Product} from "./model/product";
               style="width: 30px; height: 30px; border: 1px solid #fff"
               role="button"
               [style.backgroundColor]="color"
+              (click)="selectColor(product, color)"
             ></div>
           </div>
 
@@ -104,4 +105,13 @@ export class AppComponent {
   constructor() {
     console.log(this.product)
   }
+
+  /**
+   *
+   */
+  selectColor(product: Product, color: string) {
+    console.log(product)
+    console.log(color)
+  }
+
 }
