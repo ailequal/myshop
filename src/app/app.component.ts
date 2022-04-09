@@ -84,29 +84,16 @@ import {News} from "./model/news";
         </div>
       </div>
 
-      <!--news-->
+      <!--news container-->
       <div class="row 3 mt-5">
-        <!--news 1-->
-        <div class="col-sm-6">
+        <!--news loop-->
+        <div class="col-sm-6" *ngFor="let n of news">
+          <!--news-->
           <div class="card round-border ">
             <div class="card-body">
-              <h5 class="card-title">title</h5>
-              <p class="card-text">description</p>
-              <a href="http://www.google.com" target="_blank" class="btn btn-dark round-border">
-                <i class="fas fa-external-link-alt"></i>
-                Visit
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!--news 2-->
-        <div class="col-sm-6">
-          <div class="card round-border ">
-            <div class="card-body">
-              <h5 class="card-title">title</h5>
-              <p class="card-text">description</p>
-              <a href="http://www.google.com" target="_blank" class="btn btn-dark round-border">
+              <h5 class="card-title">{{n.title}}</h5>
+              <p class="card-text">{{n.description}}</p>
+              <a [href]="n.url" target="_blank" class="btn btn-dark round-border">
                 <i class="fas fa-external-link-alt"></i>
                 Visit
               </a>
@@ -168,6 +155,21 @@ export class AppComponent {
         "black", "red", "lightgreen", "midnightblue", "mediumpurple"
       ]
 
+    }
+  ];
+
+  news: News[] = [
+    {
+      "id": 1,
+      "title": "myWatch Series 6",
+      "description": "Measure your blood oxygen level with a revolutionary sensor and app. Take an ECG anytime, anywhere. See your fitness metrics at a glance with the enhanced Always-On Retina display. ",
+      "url": "https://www.apple.com/it/apple-watch-series-6/"
+    },
+    {
+      "id": 2,
+      "title": "myTV 4K",
+      "description": "The new Apple TV 4K brings the best of TV together with your favorite Apple devices and services — in a powerful experience that will transform your living room.",
+      "url": "https://www.apple.com/apple-tv-4k/"
     }
   ];
 
