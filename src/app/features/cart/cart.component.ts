@@ -123,7 +123,7 @@ import {NgModel} from "@angular/forms";
             <div class="col-md-6">
               <label for="cc-number" class="form-label">Credit card number</label>
               <input id="cc-number" type="text" class="form-control" required minlength="16" maxlength="16" ngModel
-                     name="cardNumber"
+                     name="cardNumber" pattern="^[0-9]*$"
                      #cardNumberRef="ngModel" [ngClass]="checkField(cardNumberRef)">
               <div class="invalid-feedback">
                 Credit card number is required (16 numbers)
@@ -144,7 +144,7 @@ import {NgModel} from "@angular/forms";
             <div class="col-md-3">
               <label for="cc-cvv" class="form-label">CVV</label>
               <input id="cc-cvv" type="text" class="form-control" required minlength="3" maxlength="3" ngModel
-                     name="cardCVV"
+                     name="cardCVV" pattern="^[0-9]*$"
                      #cardCVVRef="ngModel" [ngClass]="checkField(cardCVVRef)">
               <div class="invalid-feedback">
                 Security code required
