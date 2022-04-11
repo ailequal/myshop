@@ -8,7 +8,7 @@ import {Product} from "../../model/product";
   selector: 'ac-shop',
   template: `
     <!--main container-->
-    <div class="container">
+    <div class="shop container">
 
       <!--hero-->
       <div class="card round-border overflow-hidden mt-3" style="height: 300px">
