@@ -118,6 +118,33 @@ import {User} from "./model/user";
         </div>
       </div>
 
+      <!--newsletter-->
+      <div class="bg-dark text-white mt-5">
+        <div class="container py-5 text-center">
+          <i class="fab fa-shopify fa-4x"></i>
+
+          <h1 class="">Subscribe the newsletter</h1>
+
+          <div>Subscribe our newsletter to get notified about news and updates</div>
+
+          <div class="d-flex justify-content-center mt-2">
+            <form class="row g-3">
+              <div class="col-auto">
+                <input
+                  type="email" class="form-control form-control-lg" placeholder="Your email address"
+                >
+              </div>
+              <div class="col-auto">
+                <button
+                  type="submit" class="btn btn-lg btn-primary mb-3"
+                >Subscribe
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
       <!--template driven form container-->
       <div class="row 3 mt-5 mb-3">
         <!--template driven form-->
