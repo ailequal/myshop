@@ -26,7 +26,7 @@ import {NgForm, NgModel} from "@angular/forms";
             <div class="col-sm-6">
               <label for="firstName" class="form-label">First name</label>
               <input type="text" class="form-control" required ngModel name="firstName" #firstNameRef="ngModel"
-                     [ngClass]="{ 'is-invalid': firstNameRef.invalid, 'is-valid': firstNameRef.valid} "
+                     [ngClass]="checkField(firstNameRef)"
               >
               <div class="invalid-feedback">
                 Valid first name is required.
@@ -36,7 +36,7 @@ import {NgForm, NgModel} from "@angular/forms";
             <div class="col-sm-6">
               <label for="lastName" class="form-label">Last name</label>
               <input type="text" class="form-control" required ngModel name="lastName" #lastNameRef="ngModel"
-                     [ngClass]="{ 'is-invalid': lastNameRef.invalid, 'is-valid': lastNameRef.valid} "
+                     [ngClass]="checkField(lastNameRef)"
               >
               <div class="invalid-feedback">
                 Valid last name is required.
@@ -72,6 +72,17 @@ export class CartComponent implements OnInit {
    * The ngOnInit method.
    */
   ngOnInit(): void {
+  }
+
+  /**
+   * Check the passed field and return
+   *
+   * @param input
+   *
+   * @return Object
+   */
+  checkField(input: NgModel):Object {
+    return {'is-invalid': input.invalid, 'is-valid': input.valid}
   }
 
   /**
