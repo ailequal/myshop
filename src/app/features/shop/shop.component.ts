@@ -3,7 +3,6 @@ import {NgForm, NgModel} from "@angular/forms";
 import {Hero} from "../../model/hero";
 import {News} from "../../model/news";
 import {Product} from "../../model/product";
-import {User} from "../../model/user";
 
 @Component({
   selector: 'ac-shop',
@@ -119,7 +118,7 @@ import {User} from "../../model/user";
       </div>
 
       <!--newsletter-->
-      <div class="bg-dark text-white mt-5">
+      <div class="bg-dark text-white mt-5 mb-3">
         <div class="container py-5 text-center">
           <i class="fab fa-shopify fa-4x"></i>
 
@@ -147,15 +146,6 @@ import {User} from "../../model/user";
             </form>
           </div>
         </div>
-      </div>
-
-      <!--template driven form container-->
-      <div class="row 3 mt-5 mb-3">
-        <!--template driven form-->
-        <form #f="ngForm" (ngSubmit)="onSubmit(f, inputRef)">
-          <input #inputRef="ngModel" [ngModel]="user.name" name="userName">
-          <button type="submit" [disabled]="f.invalid">SEND</button>
-        </form>
       </div>
 
     </div>
@@ -233,11 +223,6 @@ export class ShopComponent implements OnInit {
     }
   ];
 
-  user: User = {
-    name: 'Donald',
-    surname: 'Duck'
-  }
-
   // TODO: The selected color is the same for all the available products.
   //  This bug will be fixed later on. Ignore it for now.
   selectedColor: string | null = null;
@@ -270,19 +255,6 @@ export class ShopComponent implements OnInit {
    */
   send(email: string): void {
     alert(email)
-  }
-
-  /**
-   * Handles the form submission.
-   *
-   * @param f
-   * @param inputRef
-   */
-  onSubmit(f: NgForm, inputRef: NgModel) {
-    console.log(f.value.userName)
-    console.log(inputRef.dirty)
-
-    this.user.name = 'Scrooge'
   }
 
 }
