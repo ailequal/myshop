@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForm, NgModel} from "@angular/forms";
 import {Hero} from "../../model/hero";
 import {News} from "../../model/news";
 import {Product} from "../../model/product";
