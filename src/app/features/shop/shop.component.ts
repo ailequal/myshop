@@ -117,7 +117,7 @@ import {Product} from "../../model/product";
       </div>
 
       <!--newsletter-->
-      <div class="bg-dark text-white mt-5 mb-3">
+      <div class="bg-dark text-white mt-5">
         <div class="container py-5 text-center">
           <i class="fab fa-shopify fa-4x"></i>
 
