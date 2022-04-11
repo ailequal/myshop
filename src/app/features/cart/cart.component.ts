@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForm, NgModel} from "@angular/forms";
+import {NgModel} from "@angular/forms";
 
 @Component({
   selector: 'ac-cart',
@@ -19,9 +19,11 @@ import {NgForm, NgModel} from "@angular/forms";
           Cart Summary
         </div>
 
+        <!--cart form-->
         <form #f="ngForm" (submit)="submitHandler(f.value)" class="col-md-7 col-lg-8">
           <h4 class="mb-3">Billing address</h4>
 
+          <!--all the form inputs-->
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">First name</label>
@@ -43,7 +45,45 @@ import {NgForm, NgModel} from "@angular/forms";
               </div>
             </div>
 
-            <!--OTHER FIELDS PLACEHOLDER-->
+            <div class="col-12">
+              <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
+              <input type="email" class="form-control" placeholder="you@example.com" ngModel name="email" required email
+                     #emailRef="ngModel" [ngClass]="checkField(emailRef)">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" placeholder="1234 Main St" required ngModel name="address"
+                     #addressRef="ngModel" [ngClass]="checkField(addressRef)">
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+
+            <div class="col-md-5">
+              <label for="country" class="form-label">Country</label>
+              <select class="form-select" required ngModel name="country" #countryRef="ngModel"
+                      [ngClass]="checkField(countryRef)">
+                <option disabled [value]="null">Choose...</option>
+                <option value="it">Italy</option>
+                <option value="us">United States</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="zip" class="form-label">Zip</label>
+              <input type="text" class="form-control" required ngModel name="zip" minlength="4" maxlength="5"
+                     #zipRef="ngModel" [ngClass]="checkField(zipRef)">
+              <div class="invalid-feedback">
+                Zip code required (4 or 5 chars)
+              </div>
+            </div>
           </div>
 
           <hr class="my-4">
@@ -81,7 +121,7 @@ export class CartComponent implements OnInit {
    *
    * @return Object
    */
-  checkField(input: NgModel):Object {
+  checkField(input: NgModel): Object {
     return {'is-invalid': input.invalid, 'is-valid': input.valid}
   }
 
