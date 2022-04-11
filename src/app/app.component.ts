@@ -128,15 +128,19 @@ import {User} from "./model/user";
           <div>Subscribe our newsletter to get notified about news and updates</div>
 
           <div class="d-flex justify-content-center mt-2">
-            <form class="row g-3">
+            <form class="row g-3" #f="ngForm" (ngSubmit)="send(f.value.email)">
               <div class="col-auto">
                 <input
                   type="email" class="form-control form-control-lg" placeholder="Your email address"
+                  ngModel name="email" required #emailRef="ngModel"
+                  pattern="^[A-Za-z0-9](([_\\.\\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\\.\\-]?[a-zA-Z0-9]+)*)\\.([A-Za-z]{2,})$"
+                  [ngClass]="{'is-invalid': emailRef.invalid && f.dirty, 'is-valid': emailRef.valid}"
                 >
               </div>
               <div class="col-auto">
                 <button
                   type="submit" class="btn btn-lg btn-primary mb-3"
+                  [disabled]="f.invalid"
                 >Subscribe
                 </button>
               </div>
@@ -251,6 +255,15 @@ export class AppComponent {
    */
   addToCartHandler(params: { product: Product; color: string | null }): void {
     console.log(params.product, params.color)
+  }
+
+  /**
+   * Handles the newsletter form submission.
+   *
+   * @param email
+   */
+  send(email: string): void {
+    alert(email)
   }
 
   /**
