@@ -88,8 +88,18 @@ import {NgModel} from "@angular/forms";
 
           <hr class="my-4">
 
-          <!--PAYMENT OPTIONS PLACEHOLDER-->
-          <div>Empty div for now.</div>
+          <!--payment options-->
+          <h4 class="mb-3">Payment</h4>
+          <div class="my-3">
+            <div class="form-check">
+              <input type="radio" ngModel name="paymentMethod" value="creditCard" required class="form-check-input">
+              <label class="form-check-label" for="credit">Credit card</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" ngModel name="paymentMethod" value="bankTransfer" required class="form-check-input">
+              <label class="form-check-label" for="debit">Bank Transfer</label>
+            </div>
+          </div>
 
           <hr class="my-4">
 
