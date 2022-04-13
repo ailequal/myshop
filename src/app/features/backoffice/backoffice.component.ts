@@ -19,6 +19,8 @@ import {Product} from '../../model/product';
             <li
               class="list-group-item "
               *ngFor="let product of products"
+              [ngClass]="{'list-group-item-dark': product.id === selectedProduct?.id}"
+              (click)="selectedProduct = product"
             >
               <img [src]="product.image" height="50" class="mx-2">
               {{product.label}}
