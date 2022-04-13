@@ -218,7 +218,18 @@ export class ShopComponent implements OnInit {
    * @param email
    */
   send(email: string): void {
-    alert(email)
+    // We simulate the newsletter subscription through a simple GET.
+    // The db.json has a corresponding resources, that we will check.
+    this.http.get<{ response: string }>('http://localhost:3000/newsletter')
+      .subscribe({
+        next: (v) => {
+          if (v.response === 'ok') {
+            alert('subscribed')
+          }
+        },
+        error: (e) => console.log(e),
+        complete: () => console.log('Completed http.get<{ response: string }>[]>().')
+      });
   }
 
 }
