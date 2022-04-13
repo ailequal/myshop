@@ -38,17 +38,22 @@ import {Product} from '../../model/product';
             <input type="text" required minlength="3" class="form-control my-1" [ngModel]="selectedProduct?.label"
                    name="label" placeholder="Product name" #labelRef="ngModel" [ngClass]="checkField(labelRef, f)">
             <textarea class="form-control" required cols="30" [ngModel]="selectedProduct?.description"
-                      name="description" placeholder="description"></textarea>
+                      name="description" placeholder="description" #descriptionRef="ngModel"
+                      [ngClass]="checkField(descriptionRef, f)"></textarea>
             <input type="number" required class="form-control my-1" [ngModel]="selectedProduct?.price" name="price"
-                   placeholder="Price">
+                   placeholder="Price" #priceRef="ngModel" [ngClass]="checkField(priceRef, f)">
             <input type="url" required class="form-control my-1" [ngModel]="selectedProduct?.image" name="image"
-                   placeholder="Image url (es. http://www...)">
+                   placeholder="Image URL" #imageRef="ngModel" [ngClass]="checkField(imageRef, f)">
             <input type="number" required step="1" min="1" max="100" class="form-control my-1"
-                   [ngModel]="selectedProduct?.display" name="display" placeholder="Display Size (1-100)">
+                   [ngModel]="selectedProduct?.display" name="display" placeholder="Display Size (1-100)"
+                   #displayRef="ngModel" [ngClass]="checkField(displayRef, f)">
             <input type="number" required step="1" min="1" max="100000000" class="form-control my-1"
-                   [ngModel]="selectedProduct?.storage" name="storage" placeholder="Storage (in MB)">
+                   [ngModel]="selectedProduct?.storage" name="storage" placeholder="Storage (in MB)"
+                   #storageRef="ngModel"
+                   [ngClass]="checkField(storageRef, f)">
             <input type="number" required step="1" min="1" max="100000" class="form-control my-1"
-                   [ngModel]="selectedProduct?.memory" name="memory" placeholder="Memory(in MB)">
+                   [ngModel]="selectedProduct?.memory" name="memory" placeholder="Memory(in MB)" #memoryRef="ngModel"
+                   [ngClass]="checkField(memoryRef, f)">
 
             <div class="btn-group">
               <button type="submit" class="btn btn-primary" [disabled]="f.invalid">
