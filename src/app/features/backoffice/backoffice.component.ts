@@ -54,7 +54,11 @@ import {Product} from '../../model/product';
               <button type="submit" class="btn btn-primary" [disabled]="f.invalid">
                 {{selectedProduct ? 'EDIT' : 'ADD'}}
               </button>
-              <button type="button" class="btn btn-danger">Delete</button>
+              <button
+                type="button" class="btn btn-danger"
+                *ngIf="selectedProduct" (click)="deleteHandler()">
+                Delete
+              </button>
             </div>
           </form>
         </div>
@@ -138,6 +142,17 @@ export class BackofficeComponent implements OnInit {
         },
         error: (e) => console.log(e),
         complete: () => console.log('Completed http.patch<Product>().')
+      });
+  }
+
+  /**
+   * Delete the currently selected product.
+   */
+  deleteHandler(): void {
+    this.http.delete<Product>(`http://localhost:3000/products/${this.selectedProduct?.id}`)
+      .subscribe(res => {
+        this.products = this.products.filter(p => p.id !== this.selectedProduct?.id);
+        this.selectedProduct = null;
       });
   }
 
