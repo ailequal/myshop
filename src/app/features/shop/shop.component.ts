@@ -182,13 +182,25 @@ export class ShopComponent implements OnInit {
    */
   ngOnInit(): void {
     this.http.get<Hero>('http://localhost:3000/hero')
-      .subscribe(res => this.hero = res);
+      .subscribe({
+        next: (v) => this.hero = v,
+        error: (e) => console.log(e),
+        complete: () => console.log('Completed http.get<Hero>().')
+      });
 
     this.http.get<Product[]>('http://localhost:3000/products')
-      .subscribe(res => this.products = res);
+      .subscribe({
+        next: (v) => this.products = v,
+        error: (e) => console.log(e),
+        complete: () => console.log('Completed http.get<Product[]>().')
+      });
 
     this.http.get<News[]>('http://localhost:3000/news')
-      .subscribe(res => this.news = res)
+      .subscribe({
+        next: (v) => this.news = v,
+        error: (e) => console.log(e),
+        complete: () => console.log('Completed http.get<News[]>().')
+      });
   }
 
   /**
