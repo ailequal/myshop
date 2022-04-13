@@ -37,20 +37,26 @@ import {Product} from '../../model/product';
           <form #f="ngForm" (ngSubmit)="saveHandler(f)">
             <input type="text" required minlength="3" class="form-control my-1" [ngModel]="selectedProduct?.label"
                    name="label" placeholder="Product name" #labelRef="ngModel" [ngClass]="checkField(labelRef, f)">
+
             <textarea class="form-control" required cols="30" [ngModel]="selectedProduct?.description"
                       name="description" placeholder="description" #descriptionRef="ngModel"
                       [ngClass]="checkField(descriptionRef, f)"></textarea>
+
             <input type="number" required class="form-control my-1" [ngModel]="selectedProduct?.price" name="price"
                    placeholder="Price" #priceRef="ngModel" [ngClass]="checkField(priceRef, f)">
+
             <input type="url" required class="form-control my-1" [ngModel]="selectedProduct?.image" name="image"
                    placeholder="Image URL" #imageRef="ngModel" [ngClass]="checkField(imageRef, f)">
+
             <input type="number" required step="1" min="1" max="100" class="form-control my-1"
                    [ngModel]="selectedProduct?.display" name="display" placeholder="Display Size (1-100)"
                    #displayRef="ngModel" [ngClass]="checkField(displayRef, f)">
+
             <input type="number" required step="1" min="1" max="100000000" class="form-control my-1"
                    [ngModel]="selectedProduct?.storage" name="storage" placeholder="Storage (in MB)"
                    #storageRef="ngModel"
                    [ngClass]="checkField(storageRef, f)">
+
             <input type="number" required step="1" min="1" max="100000" class="form-control my-1"
                    [ngModel]="selectedProduct?.memory" name="memory" placeholder="Memory(in MB)" #memoryRef="ngModel"
                    [ngClass]="checkField(memoryRef, f)">
@@ -59,6 +65,7 @@ import {Product} from '../../model/product';
               <button type="submit" class="btn btn-primary" [disabled]="f.invalid">
                 {{selectedProduct ? 'EDIT' : 'ADD'}}
               </button>
+
               <button
                 type="button" class="btn btn-danger"
                 *ngIf="selectedProduct" (click)="deleteHandler()">
@@ -107,6 +114,8 @@ export class BackofficeComponent implements OnInit {
    * @return Object
    */
   checkField(input: NgModel, form: NgForm): Object {
+    // TODO: In this way, as soon as we start typing, all the other inputs will be flagged as invalid.
+    //  Maybe we should check each one individually when we start to fill the form??
     return {'is-invalid': input.invalid && form.dirty, 'is-valid': input.valid}
   }
 
