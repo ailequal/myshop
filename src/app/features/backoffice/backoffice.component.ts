@@ -1,20 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Product} from '../../model/product';
 
 @Component({
   selector: 'ac-backoffice',
   template: `
-    <p>
-      backoffice works!
-    </p>
+    <pre>{{products | json}}</pre>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class BackofficeComponent implements OnInit {
 
-  constructor() { }
+  products: Product[] = [];
 
+  selectedProduct: Product | null = null;
+
+  /**
+   * The constructor method.
+   */
+  constructor(private http: HttpClient) {
+  }
+
+  /**
+   * The ngOnInit method.
+   */
   ngOnInit(): void {
+    this.http.get<Product[]>('http://localhost:3000/products')
+      .subscribe(res => this.products = res);
   }
 
 }
