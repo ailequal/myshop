@@ -62,6 +62,12 @@ import {Product} from '../../model/product';
                    [ngModel]="selectedProduct?.memory" name="memory" placeholder="Memory (MB)" #memoryRef="ngModel"
                    [ngClass]="checkField(memoryRef, f)">
 
+            <!--color picker-->
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <input type="color" #colorInput>
+              <i class="fas fa-plus-circle" (click)="colors.push(colorInput.value);"></i>
+            </div>
+
             <!--color list-->
             <div class="d-flex gap-3 ">
               <div
