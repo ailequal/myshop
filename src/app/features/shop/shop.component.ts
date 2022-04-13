@@ -127,13 +127,11 @@ import {Product} from "../../model/product";
           <div>Subscribe our newsletter to get notified about news and updates</div>
 
           <div class="d-flex justify-content-center mt-2">
-            <div *ngIf="subscribed">{{subscribed}} is already subscribed to our newsletter.</div>
-
-            <form *ngIf="!subscribed" class="row g-3" #f="ngForm" (ngSubmit)="send(f.value.email)">
+            <form class="row g-3" #f="ngForm" (ngSubmit)="send(f.value.email)">
               <div class="col-auto">
                 <input
                   type="email" class="form-control form-control-lg" placeholder="Your email address"
-                  ngModel name="email" required #emailRef="ngModel"
+                  [ngModel]="subscribed" [readOnly]="subscribed" name="email" required #emailRef="ngModel"
                   pattern="^[A-Za-z0-9](([_\\.\\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\\.\\-]?[a-zA-Z0-9]+)*)\\.([A-Za-z]{2,})$"
                   [ngClass]="{'is-invalid': emailRef.invalid && f.dirty, 'is-valid': emailRef.valid}"
                 >
