@@ -88,11 +88,41 @@ export class BackofficeComponent implements OnInit {
   }
 
   /**
-   * Handle the form submission.
+   * Handle the form submission (it could be for adding or editing a product).
    *
    * @param form
    */
   saveHandler(form: NgForm): void {
+    if (this.selectedProduct) {
+      this.editHandler(form)
+    } else {
+      this.addHandler(form)
+    }
+  }
+
+  /**
+   * Add a new product from the relative form submission.
+   *
+   * @param form
+   */
+  addHandler(form: NgForm): void {
+    this.http.post<Product>('http://localhost:3000/products', form.value)
+      .subscribe({
+        next: (v) => {
+          this.products = [...this.products, v];
+          form.reset();
+        },
+        error: (e) => console.log(e),
+        complete: () => console.log('Completed http.post<Product>().')
+      })
+  }
+
+  /**
+   * Edit an existing product from the relative form submission.
+   *
+   * @param form
+   */
+  editHandler(form: NgForm): void {
     console.log(form.value)
   }
 
