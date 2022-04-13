@@ -65,6 +65,7 @@ import {Product} from '../../model/product';
             <!--color picker-->
             <div class="d-flex align-items-center gap-2 mb-3">
               <input type="color" #colorInput>
+              <!--TODO: The color value itself acts as ID, if the exact same color is added twice...-->
               <i class="fas fa-plus-circle" (click)="colors.push(colorInput.value);"></i>
             </div>
 
@@ -86,7 +87,7 @@ import {Product} from '../../model/product';
             <hr>
 
             <div class="btn-group">
-              <button type="submit" class="btn btn-primary" [disabled]="f.invalid">
+              <button type="submit" class="btn btn-primary" [disabled]="f.invalid || !colors.length">
                 {{selectedProduct ? 'EDIT' : 'ADD'}}
               </button>
 
