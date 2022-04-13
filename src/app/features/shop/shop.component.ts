@@ -127,7 +127,9 @@ import {Product} from "../../model/product";
           <div>Subscribe our newsletter to get notified about news and updates</div>
 
           <div class="d-flex justify-content-center mt-2">
-            <form class="row g-3" #f="ngForm" (ngSubmit)="send(f.value.email)">
+            <div *ngIf="subscribed">{{subscribed}} is already subscribed to our newsletter.</div>
+
+            <form *ngIf="!subscribed" class="row g-3" #f="ngForm" (ngSubmit)="send(f.value.email)">
               <div class="col-auto">
                 <input
                   type="email" class="form-control form-control-lg" placeholder="Your email address"
@@ -139,7 +141,7 @@ import {Product} from "../../model/product";
               <div class="col-auto">
                 <button
                   type="submit" class="btn btn-lg btn-primary mb-3"
-                  [disabled]="f.invalid"
+                  [disabled]="subscribed || f.invalid"
                 >Subscribe
                 </button>
               </div>
@@ -165,6 +167,8 @@ export class ShopComponent implements OnInit {
   products: Product[] = [];
 
   news: News[] = [];
+
+  subscribed: string | null = null;
 
   // TODO: The selected color is the same for all the available products.
   //  This bug will be fixed later on. Ignore it for now.
@@ -201,6 +205,8 @@ export class ShopComponent implements OnInit {
         error: (e) => console.log(e),
         complete: () => console.log('Completed http.get<News[]>().')
       });
+
+    this.subscribed = localStorage.getItem('subscribed')
   }
 
   /**
@@ -219,7 +225,7 @@ export class ShopComponent implements OnInit {
    */
   send(email: string): void {
     // We simulate the newsletter subscription through a simple GET.
-    // The db.json has a corresponding resources, that we will check.
+    // The db.json has a corresponding resource, that we will check.
     this.http.get<{ response: string }>(
       'http://localhost:3000/newsletter',
       {
@@ -230,7 +236,9 @@ export class ShopComponent implements OnInit {
       .subscribe({
         next: (v) => {
           if (v.response === 'ok') {
-            alert('subscribed')
+            this.subscribed = email
+            localStorage.setItem('subscribed', email)
+            alert('Subscribed successfully!!')
           }
         },
         error: (e) => console.log(e),
