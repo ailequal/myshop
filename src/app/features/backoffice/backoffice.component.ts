@@ -22,7 +22,7 @@ import {Product} from '../../model/product';
               style="cursor: pointer;"
               *ngFor="let product of products"
               [ngClass]="{'list-group-item-dark': product.id === selectedProduct?.id}"
-              (click)="selectedProduct = product"
+              (click)="selectedProduct = product; colors = product.colors"
             >
               <img [src]="product.image" height="50" class="mx-2" alt="#">
               {{product.label}}
@@ -62,6 +62,23 @@ import {Product} from '../../model/product';
                    [ngModel]="selectedProduct?.memory" name="memory" placeholder="Memory (MB)" #memoryRef="ngModel"
                    [ngClass]="checkField(memoryRef, f)">
 
+            <!--color list-->
+            <div class="d-flex gap-3 ">
+              <div
+                *ngFor="let color of colors; let i = index"
+                class="position-relative"
+                [style.background]="color"
+                style="width: 80px; height: 40px; "
+              >
+                <button type="button"
+                        class="btn position-absolute top-100 start-50 translate-middle badge rounded-pill bg-danger">
+                  <i class="fas fa-trash text-white" (click)="removeColor(color)"></i>
+                </button>
+              </div>
+            </div>
+
+            <hr>
+
             <div class="btn-group">
               <button type="submit" class="btn btn-primary" [disabled]="f.invalid">
                 {{selectedProduct ? 'EDIT' : 'ADD'}}
@@ -85,6 +102,8 @@ export class BackofficeComponent implements OnInit {
   // TODO: Add an image uploader. For now we will need to give an image URL inside the form.
 
   products: Product[] = [];
+
+  colors: string[] = [];
 
   selectedProduct: Product | null = null;
 
@@ -185,6 +204,15 @@ export class BackofficeComponent implements OnInit {
         error: (e) => console.log(e),
         complete: () => console.log('Completed http.delete<Product>().')
       });
+  }
+
+  /**
+   * Remove a color option from an existing product.
+   *
+   * @param color
+   */
+  removeColor(color: string): void {
+    this.colors = this.colors.filter(c => c !== color)
   }
 
 }
