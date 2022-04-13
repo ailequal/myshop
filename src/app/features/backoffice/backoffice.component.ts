@@ -12,13 +12,14 @@ import {Product} from '../../model/product';
         <!--product list-->
         <div class="col">
           <h2>
-            <i class="fas fa-plus-circle"></i>
+            <i class="fas fa-plus-circle" style="cursor: pointer;" (click)="selectedProduct = null"></i>
             Product List
           </h2>
 
           <ul class="list-group">
             <li
-              class="list-group-item "
+              class="list-group-item"
+              style="cursor: pointer;"
               *ngFor="let product of products"
               [ngClass]="{'list-group-item-dark': product.id === selectedProduct?.id}"
               (click)="selectedProduct = product"
@@ -31,9 +32,7 @@ import {Product} from '../../model/product';
 
         <!--product edit-->
         <div class="col">
-          <h2>
-            Edit Product
-          </h2>
+          <h2>{{selectedProduct ? 'EDIT PRODUCT' : 'ADD NEW PRODUCT'}}</h2>
 
           <form #f="ngForm" (ngSubmit)="saveHandler(f)">
             <input type="text" required minlength="3" class="form-control my-1" [ngModel]="selectedProduct?.label"
@@ -52,7 +51,7 @@ import {Product} from '../../model/product';
                    [ngModel]="selectedProduct?.memory" name="memory" placeholder="Memory(in MB)">
 
             <div class="btn-group">
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-primary" [disabled]="f.invalid">
                 {{selectedProduct ? 'EDIT' : 'ADD'}}
               </button>
               <button type="button" class="btn btn-danger">Delete</button>
