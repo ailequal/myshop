@@ -65,6 +65,8 @@ import {Product} from '../../model/product';
 })
 export class BackofficeComponent implements OnInit {
 
+  // TODO: Add an image uploader. For now we will need to give an image URL inside the form.
+
   products: Product[] = [];
 
   selectedProduct: Product | null = null;
@@ -123,7 +125,20 @@ export class BackofficeComponent implements OnInit {
    * @param form
    */
   editHandler(form: NgForm): void {
-    console.log(form.value)
+    if (!this.selectedProduct)
+      return; // It should never be triggered in the first place without the selected product!!
+
+    // For the http.patch() method setting the url with template literals is probably the best (and only) way to go.
+    this.http.patch<Product>(`http://localhost:3000/products/${this.selectedProduct.id}`, form.value)
+      .subscribe({
+        next: (v) => {
+          this.products = this.products.map(p => {
+            return p.id === this.selectedProduct?.id ? v : p;
+          })
+        },
+        error: (e) => console.log(e),
+        complete: () => console.log('Completed http.patch<Product>().')
+      });
   }
 
 }
