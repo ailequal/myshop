@@ -35,20 +35,24 @@ import {Product} from '../../model/product';
           </h2>
 
           <form>
-            <input type="text" required class="form-control my-1" minlength="3" placeholder="Product name">
-            <textarea class="form-control" required cols="30" placeholder="description"></textarea>
-            <input type="number" required class="form-control my-1" placeholder="Price">
-            <input type="url" required class="form-control my-1" placeholder="Image url (es. http://www...)">
+            <input type="text" required minlength="3" class="form-control my-1" [ngModel]="selectedProduct?.label"
+                   name="label" placeholder="Product name">
+            <textarea class="form-control" required cols="30" [ngModel]="selectedProduct?.description"
+                      name="description" placeholder="description"></textarea>
+            <input type="number" required class="form-control my-1" [ngModel]="selectedProduct?.price" name="price"
+                   placeholder="Price">
+            <input type="url" required class="form-control my-1" [ngModel]="selectedProduct?.image" name="image"
+                   placeholder="Image url (es. http://www...)">
             <input type="number" required step="1" min="1" max="100" class="form-control my-1"
-                   placeholder="Display Size (1-100)">
+                   [ngModel]="selectedProduct?.display" name="display" placeholder="Display Size (1-100)">
             <input type="number" required step="1" min="1" max="100000000" class="form-control my-1"
-                   placeholder="Storage (in Mb)">
+                   [ngModel]="selectedProduct?.storage" name="storage" placeholder="Storage (in MB)">
             <input type="number" required step="1" min="1" max="100000" class="form-control my-1"
-                   placeholder="Memory(in Mb)">
+                   [ngModel]="selectedProduct?.memory" name="memory" placeholder="Memory(in MB)">
 
             <div class="btn-group">
               <button type="submit" class="btn btn-primary">
-                EDIT
+                {{selectedProduct ? 'EDIT' : 'ADD'}}
               </button>
               <button type="button" class="btn btn-danger">Delete</button>
             </div>
