@@ -246,7 +246,7 @@ export class ShopComponent implements OnInit {
           }
         },
         error: (e) => console.log(e),
-        complete: () => console.log('Completed http.get<{ response: string }>[]>().')
+        complete: () => console.log('Completed http.get<{ response: string }>().')
       });
   }
 

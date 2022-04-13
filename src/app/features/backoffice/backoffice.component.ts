@@ -26,7 +26,11 @@ export class BackofficeComponent implements OnInit {
    */
   ngOnInit(): void {
     this.http.get<Product[]>('http://localhost:3000/products')
-      .subscribe(res => this.products = res);
+      .subscribe({
+        next: (v) => this.products = v,
+        error: (e) => console.log(e),
+        complete: () => console.log('Completed http.get<Product[]>().')
+      });
   }
 
 }
