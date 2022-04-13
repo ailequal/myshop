@@ -130,9 +130,15 @@ import {Product} from "../../model/product";
             <form class="row g-3" #f="ngForm" (ngSubmit)="send(f.value.email)">
               <div class="col-auto">
                 <input
-                  type="email" class="form-control form-control-lg" placeholder="Your email address"
-                  [ngModel]="subscribed" [readOnly]="subscribed" name="email" required #emailRef="ngModel"
+                  required
+                  type="email"
+                  placeholder="Your email address"
+                  name="email"
                   pattern="^[A-Za-z0-9](([_\\.\\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\\.\\-]?[a-zA-Z0-9]+)*)\\.([A-Za-z]{2,})$"
+                  class="form-control form-control-lg"
+                  #emailRef="ngModel"
+                  [ngModel]="subscribed"
+                  [readOnly]="subscribed"
                   [ngClass]="{'is-invalid': emailRef.invalid && f.dirty, 'is-valid': emailRef.valid}"
                 >
               </div>
