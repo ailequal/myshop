@@ -158,7 +158,7 @@ export class BackofficeComponent implements OnInit {
    * @param form
    */
   addHandler(form: NgForm): void {
-    this.http.post<Product>('http://localhost:3000/products', form.value)
+    this.http.post<Product>('http://localhost:3000/products', {...form.value, colors: this.colors})
       .subscribe({
         next: (v) => {
           this.products = [...this.products, v];
@@ -179,7 +179,10 @@ export class BackofficeComponent implements OnInit {
       return; // It should never be triggered in the first place without the selected product!!
 
     // For the http.patch() method setting the url with template literals is probably the best (and only) way to go.
-    this.http.patch<Product>(`http://localhost:3000/products/${this.selectedProduct.id}`, form.value)
+    this.http.patch<Product>(`http://localhost:3000/products/${this.selectedProduct.id}`, {
+      ...form.value,
+      colors: this.colors
+    })
       .subscribe({
         next: (v) => {
           this.products = this.products.map(p => {
@@ -200,6 +203,7 @@ export class BackofficeComponent implements OnInit {
         next: () => {
           this.products = this.products.filter(p => p.id !== this.selectedProduct?.id);
           this.selectedProduct = null;
+          this.colors = [];
         },
         error: (e) => console.log(e),
         complete: () => console.log('Completed http.delete<Product>().')
