@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {NgForm} from "@angular/forms";
 import {Product} from '../../model/product';
 
 @Component({
@@ -34,7 +35,7 @@ import {Product} from '../../model/product';
             Edit Product
           </h2>
 
-          <form>
+          <form #f="ngForm" (ngSubmit)="saveHandler(f)">
             <input type="text" required minlength="3" class="form-control my-1" [ngModel]="selectedProduct?.label"
                    name="label" placeholder="Product name">
             <textarea class="form-control" required cols="30" [ngModel]="selectedProduct?.description"
@@ -85,6 +86,15 @@ export class BackofficeComponent implements OnInit {
         error: (e) => console.log(e),
         complete: () => console.log('Completed http.get<Product[]>().')
       });
+  }
+
+  /**
+   * Handle the form submission.
+   *
+   * @param form
+   */
+  saveHandler(form: NgForm): void {
+    console.log(form.value)
   }
 
 }
