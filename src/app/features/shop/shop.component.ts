@@ -220,7 +220,13 @@ export class ShopComponent implements OnInit {
   send(email: string): void {
     // We simulate the newsletter subscription through a simple GET.
     // The db.json has a corresponding resources, that we will check.
-    this.http.get<{ response: string }>('http://localhost:3000/newsletter')
+    this.http.get<{ response: string }>(
+      'http://localhost:3000/newsletter',
+      {
+        params: {
+          email: email
+        }
+      })
       .subscribe({
         next: (v) => {
           if (v.response === 'ok') {
