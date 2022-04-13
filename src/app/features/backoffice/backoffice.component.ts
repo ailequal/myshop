@@ -12,7 +12,7 @@ import {Product} from '../../model/product';
         <!--product list-->
         <div class="col">
           <h2>
-            <i class="fas fa-plus-circle" style="cursor: pointer;" (click)="selectedProduct = null"></i>
+            <i class="fas fa-plus-circle" style="cursor: pointer;" (click)="selectedProduct = null; colors = []"></i>
             Product List
           </h2>
 
@@ -103,7 +103,7 @@ export class BackofficeComponent implements OnInit {
 
   products: Product[] = [];
 
-  colors: string[] = [];
+  colors: string[] = []; // TODO: Colors are handled badly (for now only)!!
 
   selectedProduct: Product | null = null;
 
