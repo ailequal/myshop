@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {NgForm} from "@angular/forms";
+import {NgForm, NgModel} from "@angular/forms";
 import {Product} from '../../model/product';
 
 @Component({
@@ -24,7 +24,7 @@ import {Product} from '../../model/product';
               [ngClass]="{'list-group-item-dark': product.id === selectedProduct?.id}"
               (click)="selectedProduct = product"
             >
-              <img [src]="product.image" height="50" class="mx-2">
+              <img [src]="product.image" height="50" class="mx-2" alt="#">
               {{product.label}}
             </li>
           </ul>
@@ -36,7 +36,7 @@ import {Product} from '../../model/product';
 
           <form #f="ngForm" (ngSubmit)="saveHandler(f)">
             <input type="text" required minlength="3" class="form-control my-1" [ngModel]="selectedProduct?.label"
-                   name="label" placeholder="Product name">
+                   name="label" placeholder="Product name" #labelRef="ngModel" [ngClass]="checkField(labelRef, f)">
             <textarea class="form-control" required cols="30" [ngModel]="selectedProduct?.description"
                       name="description" placeholder="description"></textarea>
             <input type="number" required class="form-control my-1" [ngModel]="selectedProduct?.price" name="price"
@@ -91,6 +91,18 @@ export class BackofficeComponent implements OnInit {
         error: (e) => console.log(e),
         complete: () => console.log('Completed http.get<Product[]>().')
       });
+  }
+
+  /**
+   * Check the passed field and return
+   *
+   * @param input
+   * @param form
+   *
+   * @return Object
+   */
+  checkField(input: NgModel, form: NgForm): Object {
+    return {'is-invalid': input.invalid && form.dirty, 'is-valid': input.valid}
   }
 
   /**
@@ -150,9 +162,13 @@ export class BackofficeComponent implements OnInit {
    */
   deleteHandler(): void {
     this.http.delete<Product>(`http://localhost:3000/products/${this.selectedProduct?.id}`)
-      .subscribe(res => {
-        this.products = this.products.filter(p => p.id !== this.selectedProduct?.id);
-        this.selectedProduct = null;
+      .subscribe({
+        next: () => {
+          this.products = this.products.filter(p => p.id !== this.selectedProduct?.id);
+          this.selectedProduct = null;
+        },
+        error: (e) => console.log(e),
+        complete: () => console.log('Completed http.delete<Product>().')
       });
   }
 
