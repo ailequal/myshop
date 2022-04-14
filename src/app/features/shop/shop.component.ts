@@ -28,17 +28,9 @@ import {Product} from "../../shared/model/product";
       <div class="row 3 mt-5">
         <!--news loop-->
         <div class="col-sm-6" *ngFor="let n of news">
-          <!--news-->
-          <div class="card round-border ">
-            <div class="card-body">
-              <h5 class="card-title">{{n.title}}</h5>
-              <p class="card-text">{{n.description}}</p>
-              <a [href]="n.url" target="_blank" class="btn btn-dark round-border">
-                <i class="fas fa-external-link-alt"></i>
-                Visit
-              </a>
-            </div>
-          </div>
+          <ac-shop-item-news
+            [news]="n"
+          ></ac-shop-item-news>
         </div>
       </div>
 
