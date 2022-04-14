@@ -23,9 +23,9 @@ export class AppComponent implements OnInit {
 
   // Define the active and also starting page.
   activePage: MainPage = {
-    slug: 'backoffice',
-    title: 'Backoffice',
-    main: 'The backoffice section.'
+    slug: 'shop',
+    title: 'Shop',
+    main: 'The shop section.'
   };
 
   // TODO: These values should be probably stored somewhere else better...

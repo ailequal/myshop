@@ -46,6 +46,8 @@ export abstract class NavbarComponent<T extends Page> implements OnInit {
 })
 export class NavbarMainComponent extends NavbarComponent<MainPage> {
 
+  // TODO: Pass the active button class as a property for the component.
+
   /**
    * The constructor method.
    */
@@ -70,7 +72,7 @@ export class NavbarMainComponent extends NavbarComponent<MainPage> {
         *ngFor="let page of pages"
         (click)="selectPage.emit(page)"
         [ngClass]="{
-        'bg-success': page.slug === activePage.slug
+        'bg-warning': page.slug === activePage.slug
         }"
       >
         {{page.title | uppercase}}
@@ -81,6 +83,8 @@ export class NavbarMainComponent extends NavbarComponent<MainPage> {
   styles: [],
 })
 export class NavbarSubComponent extends NavbarComponent<SubPage> {
+
+  // TODO: Pass the active button class as a property for the component.
 
   /**
    * The constructor method.

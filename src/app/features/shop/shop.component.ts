@@ -28,9 +28,7 @@ import {Product} from "../../shared/model/product";
       <div class="row 3 mt-5">
         <!--news loop-->
         <div class="col-sm-6" *ngFor="let n of news">
-          <ac-shop-item-news
-            [news]="n"
-          ></ac-shop-item-news>
+          <ac-shop-item-news [news]="n"></ac-shop-item-news>
         </div>
       </div>
 

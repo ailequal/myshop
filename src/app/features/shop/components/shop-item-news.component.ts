@@ -4,7 +4,7 @@ import {News} from "../../../shared/model/news";
 @Component({
   selector: 'ac-shop-item-news',
   template: `
-    <div class="card round-border ">
+    <div class="card round-border mt-3">
       <div class="card-body">
         <h5 class="card-title">{{news.title}}</h5>
         <p class="card-text">{{news.description}}</p>
