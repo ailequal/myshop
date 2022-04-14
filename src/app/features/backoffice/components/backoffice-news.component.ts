@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'ac-backoffice-news',
@@ -7,13 +7,21 @@ import { Component, OnInit } from '@angular/core';
       backoffice-news works!
     </p>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class BackofficeNewsComponent implements OnInit {
 
-  constructor() { }
+  // TODO: Implement this component similar to BackofficeProductsComponent.
 
+  /**
+   * The constructor method.
+   */
+  constructor() {
+  }
+
+  /**
+   * The ngOnInit method.
+   */
   ngOnInit(): void {
   }
 

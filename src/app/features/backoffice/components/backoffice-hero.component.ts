@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'ac-backoffice-hero',
@@ -7,13 +7,21 @@ import { Component, OnInit } from '@angular/core';
       backoffice-hero works!
     </p>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class BackofficeHeroComponent implements OnInit {
 
-  constructor() { }
+  // TODO: Implement this component similar to BackofficeProductsComponent.
 
+  /**
+   * The constructor method.
+   */
+  constructor() {
+  }
+
+  /**
+   * The ngOnInit method.
+   */
   ngOnInit(): void {
   }
 
