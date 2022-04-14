@@ -3,12 +3,7 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'ac-root',
   template: `
-    <!--navigation-->
-    <div class="navigation" style="display: flex; justify-content: center; align-content: center">
-      <button (click)="page = 'shop'">SHOP</button>
-      <button (click)="page = 'cart'">CART</button>
-      <button (click)="page = 'backoffice'">BACKOFFICE</button>
-    </div>
+    <ac-navbar (selectPage)="page = $event"></ac-navbar>
 
     <!--if statement-->
     <!--    <ac-shop *ngIf="page === 'shop'"></ac-shop>-->
