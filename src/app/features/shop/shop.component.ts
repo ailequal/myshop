@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Hero} from "../../model/hero";
-import {News} from "../../model/news";
-import {Product} from "../../model/product";
+import {Hero} from "../../shared/model/hero";
+import {News} from "../../shared/model/news";
+import {Product} from "../../shared/model/product";
 
 @Component({
   selector: 'ac-shop',
@@ -26,7 +26,7 @@ import {Product} from "../../model/product";
       <!--cards container-->
       <div class="row row-cols-1 row-cols-lg-2  row-cols-xl-3 mt-5">
         <!--cards loop-->
-        <div class="col" *ngFor="let product of products">
+        <div class="col mb-3" *ngFor="let product of products">
           <!--card-->
           <div class="card h-100 round-border shadow-lg">
             <!--image-->
