@@ -1,12 +1,17 @@
 import {Component} from '@angular/core';
-import {Page} from "./core/model/page";
+import {MainPage, SubPage} from "./core/model/page";
 
 @Component({
   selector: 'ac-root',
   template: `
-    <ac-navbar [activePage]="page" [pages]="pages" (selectPage)="switchPage($event)"></ac-navbar>
+    <ac-navbar-main
+      [activePage]="activePage"
+      [pages]="pages"
+      (selectPage)="setActivePage($event)"
+    >
+    </ac-navbar-main>
 
-    <ng-container [ngSwitch]="page">
+    <ng-container [ngSwitch]="activePage.slug">
       <ac-shop *ngSwitchCase="'shop'"></ac-shop>
       <ac-cart *ngSwitchCase="'cart'"></ac-cart>
       <ac-backoffice *ngSwitchCase="'backoffice'"></ac-backoffice>
@@ -16,9 +21,31 @@ import {Page} from "./core/model/page";
 })
 export class AppComponent {
 
-  page: Page = 'backoffice';
+  // Define the active and also starting page.
+  activePage: MainPage = {
+    slug: 'backoffice',
+    title: 'Backoffice',
+    main: 'The backoffice section.'
+  };
 
-  pages: Page[] = ['shop', 'cart', 'backoffice'];
+  // TODO: These values should be probably stored somewhere else better...
+  pages: MainPage[] = [
+    {
+      slug: 'shop',
+      title: 'Shop',
+      main: 'The shop section.'
+    },
+    {
+      slug: 'cart',
+      title: 'Cart',
+      main: 'The cart section.'
+    },
+    {
+      slug: 'backoffice',
+      title: 'Backoffice',
+      main: 'The backoffice section.'
+    }
+  ];
 
   /**
    * The constructor method.
@@ -27,15 +54,12 @@ export class AppComponent {
   }
 
   /**
-   * switchPage()
+   * setActivePage()
    *
    * @param page
    */
-  switchPage(page: string) {
-    // Cast the value from the custom event.
-    // It's "safe", since we know how the navbar component works.
-    this.page = page as Page;
-    // this.page = <Page>page; // Some thing with different syntax.
+  setActivePage(page: MainPage) {
+    this.activePage = page;
   }
 
 }
