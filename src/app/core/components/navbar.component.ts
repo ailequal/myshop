@@ -11,6 +11,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  // TODO: We should implement generics here for the input and/or output?!!
+
   @Input() pages: string[] = [];
 
   @Output() selectPage = new EventEmitter<string>();
