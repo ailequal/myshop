@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'ac-navbar',
@@ -14,6 +14,8 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  @Input() pages: string[] = [];
+
   @Output() selectPage = new EventEmitter<'cart' | 'shop' | 'backoffice'>();
 
   /**
@@ -26,6 +28,7 @@ export class NavbarComponent implements OnInit {
    * The ngOnInit method.
    */
   ngOnInit(): void {
+    console.log(this.pages);
   }
 
 }

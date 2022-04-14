@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'ac-root',
   template: `
-    <ac-navbar (selectPage)="page = $event"></ac-navbar>
+    <ac-navbar [pages]="pages" (selectPage)="page = $event"></ac-navbar>
 
     <!--if statement-->
     <!--    <ac-shop *ngIf="page === 'shop'"></ac-shop>-->
@@ -23,6 +23,8 @@ import {Component} from '@angular/core';
 export class AppComponent {
 
   page: 'cart' | 'shop' | 'backoffice' = 'backoffice';
+
+  pages: string[] = ['cart', 'shop', 'backoffice'];
 
   /**
    * The constructor method.
