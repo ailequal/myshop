@@ -7,14 +7,20 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { ShopComponent } from './features/shop/shop.component';
 import { CartComponent } from './features/cart/cart.component';
-import { BackofficeComponent } from './features/backoffice/backoffice.component';
+import { BackofficeComponent } from './features/backoffice/components/backoffice.component';
+import { BackofficeProductsComponent } from './features/backoffice/components/backoffice-products.component';
+import { BackofficeNewsComponent } from './features/backoffice/components/backoffice-news.component';
+import { BackofficeHeroComponent } from './features/backoffice/components/backoffice-hero.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShopComponent,
     CartComponent,
-    BackofficeComponent
+    BackofficeComponent,
+    BackofficeProductsComponent,
+    BackofficeNewsComponent,
+    BackofficeHeroComponent
   ],
   imports: [
     BrowserModule,
