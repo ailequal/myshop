@@ -4,7 +4,7 @@ import {Page} from "./core/model/page";
 @Component({
   selector: 'ac-root',
   template: `
-    <ac-navbar [pages]="pages" (selectPage)="switchPage($event)"></ac-navbar>
+    <ac-navbar [activePage]="page" [pages]="pages" (selectPage)="switchPage($event)"></ac-navbar>
 
     <ng-container [ngSwitch]="page">
       <ac-shop *ngSwitchCase="'shop'"></ac-shop>

@@ -4,7 +4,15 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   selector: 'ac-navbar',
   template: `
     <div class="navigation" style="display: flex; justify-content: center; align-content: center">
-      <button *ngFor="let page of pages" (click)="selectPage.emit(page)">{{page | uppercase}}</button>
+      <button
+        *ngFor="let page of pages"
+        (click)="selectPage.emit(page)"
+        [ngClass]="{
+        'bg-warning': page === activePage
+        }"
+      >
+        {{page | uppercase}}
+      </button>
     </div>
   `,
   styles: []
@@ -12,6 +20,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   // TODO: We should implement generics here for the input and/or output?!!
+
+  @Input() activePage: string = '';
 
   @Input() pages: string[] = [];
 
