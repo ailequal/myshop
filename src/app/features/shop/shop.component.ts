@@ -34,10 +34,7 @@ import {Product} from "../../shared/model/product";
         </div>
       </div>
 
-    <ac-shop-item-newsletter
-
-    >
-    </ac-shop-item-newsletter>
+      <ac-shop-item-newsletter></ac-shop-item-newsletter>
 
     </div>
   `,

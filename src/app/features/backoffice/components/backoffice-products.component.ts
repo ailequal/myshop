@@ -102,7 +102,8 @@ import {Product} from '../../../shared/model/product';
 
       </div>
     </div>
-  `
+  `,
+  styles: []
 })
 export class BackofficeProductsComponent implements OnInit {
 
