@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MainPage, SubPage} from "./core/model/page";
+import {MainPage} from "./shared/model/page";
 
 @Component({
   selector: 'ac-root',

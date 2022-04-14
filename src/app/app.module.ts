@@ -15,7 +15,7 @@ import { ShopHeroComponent } from './features/shop/components/shop-hero.componen
 import { ShopItemCardComponent } from './features/shop/components/shop-item-card.component';
 import { ShopItemNewsComponent } from './features/shop/components/shop-item-news.component';
 import { ShopItemNewsletterComponent } from './features/shop/components/shop-item-newsletter.component';
-import { NavbarMainComponent, NavbarSubComponent } from './core/components/navbar.component';
+import { NavbarMainComponent, NavbarSubComponent } from './shared/components/navbar.component';
 
 @NgModule({
   declarations: [
