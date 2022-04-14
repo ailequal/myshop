@@ -18,7 +18,7 @@ export class AppComponent {
 
   page: Page = 'backoffice';
 
-  pages: Page[] = ['cart', 'shop', 'backoffice'];
+  pages: Page[] = ['shop', 'cart', 'backoffice'];
 
   /**
    * The constructor method.

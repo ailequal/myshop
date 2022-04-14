@@ -10,18 +10,7 @@ import {Product} from "../../../shared/model/product";
     <!--main container-->
     <div class="shop container">
 
-      <!--hero-->
-      <div class="card round-border overflow-hidden mt-3" style="height: 300px">
-        <img
-          class="card-img round-border"
-          style="object-fit: cover"
-          [src]="hero?.image" alt="Hero"
-        >
-        <div class="card-img-overlay mt-5">
-          <h1 class="card-title">{{hero?.title}}</h1>
-          <h4 class="card-text" [innerHTML]="hero?.description"></h4>
-        </div>
-      </div>
+      <ac-shop-hero [data]="hero"></ac-shop-hero>
 
       <!--cards container-->
       <div class="row row-cols-1 row-cols-lg-2  row-cols-xl-3 mt-5">
