@@ -1,17 +1,17 @@
 import {Component, OnInit} from '@angular/core';
+import {SubPage} from "../../shared/model/page";
 
 @Component({
   selector: 'ac-backoffice',
   template: `
-    <!--navigation-->
-    <div class="navigation" style="display: flex; justify-content: center; align-content: center">
-      <button (click)="page = 'hero'">HERO</button>
-      <button (click)="page = 'news'">NEWS</button>
-      <button (click)="page = 'products'">PRODUCTS</button>
-    </div>
+    <ac-navbar-sub
+      [activePage]="activePage"
+      [pages]="pages"
+      (selectPage)="setActivePage($event)"
+    >
+    </ac-navbar-sub>
 
-    <!--switch case statement-->
-    <ng-container [ngSwitch]="page">
+    <ng-container [ngSwitch]="activePage.slug">
       <ac-backoffice-hero *ngSwitchCase="'hero'"></ac-backoffice-hero>
       <ac-backoffice-news *ngSwitchCase="'news'"></ac-backoffice-news>
       <ac-backoffice-products *ngSwitchCase="'products'"></ac-backoffice-products>
@@ -22,7 +22,31 @@ import {Component, OnInit} from '@angular/core';
 })
 export class BackofficeComponent implements OnInit {
 
-  page: 'hero' | 'news' | 'products' = 'hero';
+  // Define the active and also starting page.
+  activePage: SubPage = {
+    slug: 'hero',
+    title: 'Hero',
+    sub: 'The hero section.'
+  };
+
+  // TODO: These values should be probably stored somewhere else better...
+  pages: SubPage[] = [
+    {
+      slug: 'hero',
+      title: 'Hero',
+      sub: 'The hero section.'
+    },
+    {
+      slug: 'news',
+      title: 'News',
+      sub: 'The news section.'
+    },
+    {
+      slug: 'products',
+      title: 'Products',
+      sub: 'The products section.'
+    }
+  ];
 
   /**
    * The constructor method.
@@ -34,6 +58,15 @@ export class BackofficeComponent implements OnInit {
    * The ngOnInit method.
    */
   ngOnInit(): void {
+  }
+
+  /**
+   * setActivePage()
+   *
+   * @param page
+   */
+  setActivePage(page: SubPage) {
+    this.activePage = page;
   }
 
 }

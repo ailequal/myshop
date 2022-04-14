@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MainPage} from "./shared/model/page";
 
 @Component({
@@ -19,7 +19,7 @@ import {MainPage} from "./shared/model/page";
   `,
   styles: []
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   // Define the active and also starting page.
   activePage: MainPage = {
@@ -51,6 +51,12 @@ export class AppComponent {
    * The constructor method.
    */
   constructor() {
+  }
+
+  /**
+   * The ngOnInit method.
+   */
+  ngOnInit(): void {
   }
 
   /**

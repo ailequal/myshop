@@ -89,7 +89,7 @@ export class NavbarSubComponent extends NavbarComponent<SubPage> {
     super();
   }
 
-  // The sub-page component does not override this method.
+  // The sub-page component does not override this method (just for fun).
   // /**
   //  * The ngOnInit method.
   //  */
