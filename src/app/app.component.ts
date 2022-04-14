@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Page} from "./core/model/page";
 
 @Component({
   selector: 'ac-root',
@@ -15,9 +16,9 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
 
-  page: 'cart' | 'shop' | 'backoffice' = 'backoffice';
+  page: Page = 'backoffice';
 
-  pages: string[] = ['cart', 'shop', 'backoffice'];
+  pages: Page[] = ['cart', 'shop', 'backoffice'];
 
   /**
    * The constructor method.
@@ -32,8 +33,9 @@ export class AppComponent {
    */
   switchPage(page: string) {
     // Cast the value from the custom event.
-    // It's safe, since we know how the navbar component works.
-    this.page = page as 'cart' | 'shop' | 'backoffice';
+    // It's "safe", since we know how the navbar component works.
+    this.page = page as Page;
+    // this.page = <Page>page; // Some thing with different syntax.
   }
 
 }
