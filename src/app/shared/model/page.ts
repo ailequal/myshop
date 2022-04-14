@@ -4,6 +4,7 @@ export interface Page {
 }
 
 export interface MainPage extends Page {
+  slug: 'shop' | 'cart' | 'backoffice',
   main: string
 }
 

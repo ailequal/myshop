@@ -38,7 +38,7 @@ export abstract class NavbarComponent<T extends Page> implements OnInit {
         }"
       >
         {{page.title | uppercase}}
-        {{page.main}}
+        <!--        {{page.main}}-->
       </button>
     </div>
   `,
@@ -74,7 +74,7 @@ export class NavbarMainComponent extends NavbarComponent<MainPage> {
         }"
       >
         {{page.title | uppercase}}
-        {{page.sub}}
+        <!--        {{page.sub}}-->
       </button>
     </div>
   `,
