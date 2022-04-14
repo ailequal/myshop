@@ -34,42 +34,10 @@ import {Product} from "../../shared/model/product";
         </div>
       </div>
 
-      <!--newsletter-->
-      <div class="bg-dark text-white mt-5">
-        <div class="container py-5 text-center">
-          <i class="fab fa-shopify fa-4x"></i>
+    <ac-shop-item-newsletter
 
-          <h1 class="">Subscribe the newsletter</h1>
-
-          <div>Subscribe our newsletter to get notified about news and updates</div>
-
-          <div class="d-flex justify-content-center mt-2">
-            <form class="row g-3" #f="ngForm" (ngSubmit)="send(f.value.email)">
-              <div class="col-auto">
-                <input
-                  required
-                  type="email"
-                  placeholder="Your email address"
-                  name="email"
-                  pattern="^[A-Za-z0-9](([_\\.\\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\\.\\-]?[a-zA-Z0-9]+)*)\\.([A-Za-z]{2,})$"
-                  class="form-control form-control-lg"
-                  #emailRef="ngModel"
-                  [ngModel]="subscribed"
-                  [readOnly]="subscribed"
-                  [ngClass]="{'is-invalid': emailRef.invalid && f.dirty, 'is-valid': emailRef.valid}"
-                >
-              </div>
-              <div class="col-auto">
-                <button
-                  type="submit" class="btn btn-lg btn-primary mb-3"
-                  [disabled]="subscribed || f.invalid"
-                >Subscribe
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+    >
+    </ac-shop-item-newsletter>
 
     </div>
   `,
@@ -82,8 +50,6 @@ export class ShopComponent implements OnInit {
   products: Product[] = [];
 
   news: News[] = [];
-
-  subscribed: string | null = null;
 
   /**
    * The constructor method.
@@ -116,8 +82,6 @@ export class ShopComponent implements OnInit {
         error: (e) => console.log(e),
         complete: () => console.log('Completed http.get<News[]>().')
       });
-
-    this.subscribed = localStorage.getItem('subscribed')
   }
 
   /**
@@ -127,34 +91,6 @@ export class ShopComponent implements OnInit {
    */
   addToCartHandler(params: { product: Product; color: string | null }): void {
     console.log(params.product, params.color)
-  }
-
-  /**
-   * Handles the newsletter form submission.
-   *
-   * @param email
-   */
-  send(email: string): void {
-    // We simulate the newsletter subscription through a simple GET.
-    // The db.json has a corresponding resource, that we will check.
-    this.http.get<{ response: string }>(
-      'http://localhost:3000/newsletter',
-      {
-        params: {
-          email: email
-        }
-      })
-      .subscribe({
-        next: (v) => {
-          if (v.response === 'ok') {
-            this.subscribed = email
-            localStorage.setItem('subscribed', email)
-            alert('Subscribed successfully!!')
-          }
-        },
-        error: (e) => console.log(e),
-        complete: () => console.log('Completed http.get<{ response: string }>().')
-      });
   }
 
 }
