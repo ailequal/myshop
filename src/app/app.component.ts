@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'ac-root',
   template: `
-    <ac-navbar [pages]="pages" (selectPage)="page = $event"></ac-navbar>
+    <ac-navbar [pages]="pages" (selectPage)="switchPage($event)"></ac-navbar>
 
     <ng-container [ngSwitch]="page">
       <ac-shop *ngSwitchCase="'shop'"></ac-shop>
@@ -15,8 +15,7 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
 
-  page: 'cart' | 'shop' | 'backoffice' = 'backoffice'; // BUG
-  // page: any = 'backoffice'; // OK...
+  page: 'cart' | 'shop' | 'backoffice' = 'backoffice';
 
   pages: string[] = ['cart', 'shop', 'backoffice'];
 
@@ -24,6 +23,17 @@ export class AppComponent {
    * The constructor method.
    */
   constructor() {
+  }
+
+  /**
+   * switchPage()
+   *
+   * @param page
+   */
+  switchPage(page: string) {
+    // Cast the value from the custom event.
+    // It's safe, since we know how the navbar component works.
+    this.page = page as 'cart' | 'shop' | 'backoffice';
   }
 
 }
