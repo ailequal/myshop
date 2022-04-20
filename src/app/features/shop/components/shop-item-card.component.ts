@@ -41,18 +41,12 @@ import {Product} from "../../../shared/model/product";
       </div>
 
       <!--colors-->
-      <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center">
-        <div
-          class="mx-1 mb-3 round-border shadow-sm"
-          style="width: 30px; height: 30px; border: 1px solid #fff"
-          role="button"
-          *ngFor="let color of product.colors"
-          (click)="selectedColor = color"
-          [style.backgroundColor]="color"
-          [style.border-width.px]="selectedColor === color ? 5 : 1"
-          [style.border-color]="selectedColor === color ? 'orange' : '#ccc'"
-        ></div>
-      </div>
+      <ac-color-picker
+        [colors]="product.colors"
+        [selectedColor]="selectedColor"
+        (selectColor)="selectedColor = $event"
+      >
+      </ac-color-picker>
 
       <!--footer-->
       <div class="card-footer d-flex justify-content-between align-items-center">
