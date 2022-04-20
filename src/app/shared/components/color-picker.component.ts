@@ -36,6 +36,7 @@ export class ColorPickerComponent implements OnInit {
    * The ngOnInit method.
    */
   ngOnInit(): void {
+    // TODO: We cannot check in this way the passed properties, since they could be passed as null!!
     // if (!this.colors) {
     //   throw new Error('No colors property information provided!!');
     // }
