@@ -11,6 +11,7 @@ import {Product} from "../../../shared/model/product";
           class="card-img-top p-3 round-border "
           [src]="product.image" [alt]="product.label"
           role="button"
+          [routerLink]="'/product/' + product.id"
         >
         <div class="position-absolute top-50 start-50 w-75 translate-middle pe-none">
           <div class="row  row-cols-3 g-2 rounded p-2 text-white" style="background: rgba(0,0,0,0.5)">
