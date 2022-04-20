@@ -18,10 +18,12 @@ import { ShopItemNewsComponent } from './features/shop/components/shop-item-news
 import { ShopItemNewsletterComponent } from './features/shop/components/shop-item-newsletter.component';
 import { NavbarMainComponent, NavbarSubComponent } from './shared/components/navbar.component';
 import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
+import { ProductComponent } from './features/product/product.component';
 
 // Define all the routes for the module RouterModule.
 const routes = [
   {path: 'shop', component: ShopComponent, pathMatch: 'full'},
+  {path: 'product/:id', component: ProductComponent, pathMatch: 'full'},
   {path: 'cart', component: CartComponent, pathMatch: 'full'},
   {path: 'backoffice', component: BackofficeComponent, pathMatch: 'full'},
   {path: 'page-not-found', component: PageNotFoundComponent, pathMatch: 'full'},
@@ -44,7 +46,8 @@ const routes = [
     ShopItemNewsletterComponent,
     NavbarMainComponent,
     NavbarSubComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
