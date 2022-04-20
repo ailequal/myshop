@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { AppComponent } from './app.component';
 import { ShopComponent } from './features/shop/shop.component';
 import { CartComponent } from './features/cart/cart.component';
 import { BackofficeComponent } from './features/backoffice/backoffice.component';
@@ -16,6 +17,17 @@ import { ShopItemCardComponent } from './features/shop/components/shop-item-card
 import { ShopItemNewsComponent } from './features/shop/components/shop-item-news.component';
 import { ShopItemNewsletterComponent } from './features/shop/components/shop-item-newsletter.component';
 import { NavbarMainComponent, NavbarSubComponent } from './shared/components/navbar.component';
+import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
+
+// Define all the routes for the module RouterModule.
+const routes = [
+  {path: 'shop', component: ShopComponent, pathMatch: 'full'},
+  {path: 'cart', component: CartComponent, pathMatch: 'full'},
+  {path: 'backoffice', component: BackofficeComponent, pathMatch: 'full'},
+  {path: 'page-not-found', component: PageNotFoundComponent, pathMatch: 'full'},
+  {path: '', redirectTo: 'shop', pathMatch: 'full'},
+  {path: '**', redirectTo: 'page-not-found', pathMatch: 'full'},
+];
 
 @NgModule({
   declarations: [
@@ -31,11 +43,13 @@ import { NavbarMainComponent, NavbarSubComponent } from './shared/components/nav
     ShopItemNewsComponent,
     ShopItemNewsletterComponent,
     NavbarMainComponent,
-    NavbarSubComponent
+    NavbarSubComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule.forRoot(routes),
     FormsModule,
     HttpClientModule
   ],
