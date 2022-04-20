@@ -11,17 +11,21 @@ import {MainPage, Page, SubPage} from "../model/page";
 })
 export abstract class NavbarComponent<T extends Page> implements OnInit {
 
-  @Input() activePage!: T;
-
   @Input() pages!: T[];
 
-  @Output() selectPage: EventEmitter<T> = new EventEmitter<T>();
+  /**
+   * The constructor method.
+   */
+  protected constructor() {
+  }
 
   /**
    * The ngOnInit method.
    */
   ngOnInit(): void {
-    console.log('NavbarPageComponent');
+    if (!this.pages) {
+      throw new Error('The pages property must be passed into the "NavbarComponent".');
+    }
   }
 
 }
@@ -32,10 +36,8 @@ export abstract class NavbarComponent<T extends Page> implements OnInit {
     <div class="navigation" style="display: flex; justify-content: center; align-content: center">
       <button
         *ngFor="let page of pages"
-        (click)="selectPage.emit(page)"
-        [ngClass]="{
-        'bg-success': page.slug === activePage.slug
-        }"
+        [routerLink]="'/' + page.slug"
+        routerLinkActive="bg-success"
       >
         {{page.title | uppercase}}
         <!--        {{page.main}}-->
@@ -46,7 +48,7 @@ export abstract class NavbarComponent<T extends Page> implements OnInit {
 })
 export class NavbarMainComponent extends NavbarComponent<MainPage> {
 
-  // TODO: Pass the active button class as a property for the component.
+  // TODO: Pass the active button style class as a property for the component.
 
   /**
    * The constructor method.
@@ -59,7 +61,7 @@ export class NavbarMainComponent extends NavbarComponent<MainPage> {
    * The ngOnInit method.
    */
   override ngOnInit(): void {
-    console.log('NavbarMainPageComponent');
+    super.ngOnInit();
   }
 
 }
@@ -84,7 +86,12 @@ export class NavbarMainComponent extends NavbarComponent<MainPage> {
 })
 export class NavbarSubComponent extends NavbarComponent<SubPage> {
 
-  // TODO: Pass the active button class as a property for the component.
+  @Input() activePage!: SubPage;
+
+  @Output() selectPage: EventEmitter<SubPage> = new EventEmitter<SubPage>();
+
+  // TODO: Somehow, the sub navbar will need to handle the sub routes properly!!
+  // TODO: Pass the active button style class as a property for the component.
 
   /**
    * The constructor method.
@@ -93,12 +100,15 @@ export class NavbarSubComponent extends NavbarComponent<SubPage> {
     super();
   }
 
-  // The sub-page component does not override this method (just for fun).
-  // /**
-  //  * The ngOnInit method.
-  //  */
-  // override ngOnInit(): void {
-  //   console.log('NavbarSubPageComponent');
-  // }
+  /**
+   * The ngOnInit method.
+   */
+  override ngOnInit(): void {
+    super.ngOnInit();
+
+    if (!this.activePage) {
+      throw new Error('The activePage property must be passed into the "NavbarSubComponent".');
+    }
+  }
 
 }

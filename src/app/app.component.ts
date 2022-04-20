@@ -4,29 +4,13 @@ import {MainPage} from "./shared/model/page";
 @Component({
   selector: 'ac-root',
   template: `
-    <ac-navbar-main
-      [activePage]="activePage"
-      [pages]="pages"
-      (selectPage)="setActivePage($event)"
-    >
-    </ac-navbar-main>
+    <ac-navbar-main [pages]="pages"></ac-navbar-main>
 
-    <ng-container [ngSwitch]="activePage.slug">
-      <ac-shop *ngSwitchCase="'shop'"></ac-shop>
-      <ac-cart *ngSwitchCase="'cart'"></ac-cart>
-      <ac-backoffice *ngSwitchCase="'backoffice'"></ac-backoffice>
-    </ng-container>
+    <router-outlet></router-outlet>
   `,
   styles: []
 })
 export class AppComponent implements OnInit {
-
-  // Define the active and also starting page.
-  activePage: MainPage = {
-    slug: 'shop',
-    title: 'Shop',
-    main: 'The shop section.'
-  };
 
   // TODO: These values should be probably stored somewhere else better...
   pages: MainPage[] = [
@@ -57,15 +41,6 @@ export class AppComponent implements OnInit {
    * The ngOnInit method.
    */
   ngOnInit(): void {
-  }
-
-  /**
-   * setActivePage()
-   *
-   * @param page
-   */
-  setActivePage(page: MainPage) {
-    this.activePage = page;
   }
 
 }
