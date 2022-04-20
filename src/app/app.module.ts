@@ -19,6 +19,7 @@ import { ShopItemNewsletterComponent } from './features/shop/components/shop-ite
 import { NavbarMainComponent, NavbarSubComponent } from './shared/components/navbar.component';
 import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
 import { ProductComponent } from './features/product/product.component';
+import { ColorPickerComponent } from './shared/components/color-picker.component';
 
 // Define all the routes for the module RouterModule.
 const routes = [
@@ -47,7 +48,8 @@ const routes = [
     NavbarMainComponent,
     NavbarSubComponent,
     PageNotFoundComponent,
-    ProductComponent
+    ProductComponent,
+    ColorPickerComponent
   ],
   imports: [
     BrowserModule,
