@@ -27,6 +27,7 @@ import {Product} from '../../shared/model/product';
             'btn-outline-secondary':!selectedColor
             }"
             (click)="addToCartHandler()"
+            [disabled]="!selectedColor"
           >
             {{selectedColor ? 'Order Now' : 'Select a Color'}}
           </button>
