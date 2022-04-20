@@ -33,20 +33,31 @@ export abstract class NavbarComponent<T extends Page> implements OnInit {
 @Component({
   selector: 'ac-navbar-main',
   template: `
-    <div class="navigation" style="display: flex; justify-content: center; align-content: center">
-      <button
-        *ngFor="let page of pages"
-        [routerLink]="'/' + page.slug"
-        routerLinkActive="bg-success"
-      >
-        {{page.title | uppercase}}
-        <!--        {{page.main}}-->
-      </button>
-    </div>
+    <nav class="navbar navbar-light bg-light sticky-top shadow-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="'/' + home.slug">
+          <span [innerHTML]="home.main"></span>
+        </a>
+
+        <div class="d-flex">
+          <button
+            *ngFor="let page of pages"
+            [routerLink]="'/' + page.slug"
+            routerLinkActive="bg-success"
+            class="btn btn-outline-dark mx-2"
+          >
+            <span [innerHTML]="page.main"></span>
+            <!--        {{page.main}}-->
+          </button>
+        </div>
+      </div>
+    </nav>
   `,
   styles: [],
 })
 export class NavbarMainComponent extends NavbarComponent<MainPage> {
+
+  @Input() home!: MainPage;
 
   // TODO: Pass the active button style class as a property for the component.
 
@@ -62,6 +73,10 @@ export class NavbarMainComponent extends NavbarComponent<MainPage> {
    */
   override ngOnInit(): void {
     super.ngOnInit();
+
+    if (!this.home) {
+      throw new Error('The home property must be passed into the "NavbarMainComponent".');
+    }
   }
 
 }
@@ -69,7 +84,7 @@ export class NavbarMainComponent extends NavbarComponent<MainPage> {
 @Component({
   selector: 'ac-navbar-sub',
   template: `
-    <div class="navigation" style="display: flex; justify-content: center; align-content: center">
+    <div class="navigation m-3" style="display: flex; justify-content: center; align-content: center">
       <button
         *ngFor="let page of pages"
         (click)="selectPage.emit(page)"
