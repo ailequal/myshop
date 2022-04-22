@@ -19,7 +19,7 @@ import { ShopItemNewsletterComponent } from './features/shop/components/shop-ite
 import { NavbarMainComponent, NavbarSubComponent } from './shared/components/navbar.component';
 import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
 import { ProductComponent } from './features/product/product.component';
-import { ColorPickerComponent } from './shared/components/color-picker.component';
+import {SharedModule} from "./shared/shared.module";
 
 // Define all the routes for the module RouterModule.
 const routes = [
@@ -48,15 +48,15 @@ const routes = [
     NavbarMainComponent,
     NavbarSubComponent,
     PageNotFoundComponent,
-    ProductComponent,
-    ColorPickerComponent
+    ProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
