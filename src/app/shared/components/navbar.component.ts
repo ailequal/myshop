@@ -59,6 +59,7 @@ export class NavbarMainComponent extends NavbarComponent<MainPage> {
 
   @Input() home!: MainPage;
 
+  // TODO: Usually the main navbar is always declared inside the core module, since it's used only once...
   // TODO: Pass the active button style class as a property for the component.
 
   /**
