@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: 'backoffice',
     loadChildren: () => import('./features/backoffice/backoffice.module').then(m => m.BackofficeModule),
-    pathMatch: 'full'
+    // pathMatch: 'full' // It's disabled, since there are sub routes!!
   },
   {
     path: 'page-not-found',
