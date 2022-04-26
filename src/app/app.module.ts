@@ -1,21 +1,21 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
-import { SharedModule } from './shared/shared.module';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from './app-routing.module';
+import {RouterModule, Routes} from '@angular/router';
+import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {SharedModule} from './shared/shared.module';
 
-import { AppComponent } from './app.component';
-import { ShopComponent } from './features/shop/shop.component';
-import { CartComponent } from './features/cart/cart.component';
-import { ShopHeroComponent } from './features/shop/components/shop-hero.component';
-import { ShopItemCardComponent } from './features/shop/components/shop-item-card.component';
-import { ShopItemNewsComponent } from './features/shop/components/shop-item-news.component';
-import { ShopItemNewsletterComponent } from './features/shop/components/shop-item-newsletter.component';
-import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
-import { ProductComponent } from './features/product/product.component';
-import { BackofficeModule } from './features/backoffice/backoffice.module';
+import {AppComponent} from './app.component';
+import {ShopComponent} from './features/shop/shop.component';
+import {CartComponent} from './features/cart/cart.component';
+import {ShopHeroComponent} from './features/shop/components/shop-hero.component';
+import {ShopItemCardComponent} from './features/shop/components/shop-item-card.component';
+import {ShopItemNewsComponent} from './features/shop/components/shop-item-news.component';
+import {ShopItemNewsletterComponent} from './features/shop/components/shop-item-newsletter.component';
+import {PageNotFoundComponent} from './features/page-not-found/page-not-found.component';
+import {ProductComponent} from './features/product/product.component';
+import {BackofficeModule} from './features/backoffice/backoffice.module';
 
 const routes: Routes = [
   {path: 'shop', component: ShopComponent, pathMatch: 'full'},
@@ -55,4 +55,5 @@ const routes: Routes = [
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
