@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RouterModule} from "@angular/router";
 import {ShopRoutingModule} from "./shop-routing.module";
 import {FormsModule} from "@angular/forms";
 import {SharedModule} from "../../shared/shared.module";
@@ -21,7 +20,6 @@ import {ShopItemNewsletterComponent} from "./components/shop-item-newsletter.com
   ],
   imports: [
     CommonModule,
-    RouterModule,
     ShopRoutingModule,
     FormsModule,
     SharedModule

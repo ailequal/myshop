@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RouterModule} from '@angular/router';
 import {BackofficeRoutingModule} from "./backoffice-routing.module";
 import {FormsModule} from '@angular/forms';
 import {SharedModule} from '../../shared/shared.module';
@@ -19,7 +18,6 @@ import {BackofficeProductsComponent} from "./components/backoffice-products.comp
   ],
   imports: [
     CommonModule,
-    RouterModule,
     BackofficeRoutingModule,
     FormsModule,
     SharedModule
