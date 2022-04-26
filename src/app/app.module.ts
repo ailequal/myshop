@@ -7,14 +7,12 @@ import {FormsModule} from "@angular/forms";
 import {SharedModule} from './shared/shared.module';
 
 import {AppComponent} from './app.component';
-import {CartComponent} from './features/cart/cart.component';
 import {PageNotFoundComponent} from './features/page-not-found/page-not-found.component';
 import {ProductComponent} from './features/product/product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CartComponent,
     PageNotFoundComponent,
     ProductComponent
   ],

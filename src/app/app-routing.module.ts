@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {ProductComponent} from "./features/product/product.component";
-import {CartComponent} from "./features/cart/cart.component";
 import {PageNotFoundComponent} from "./features/page-not-found/page-not-found.component";
 
 const routes: Routes = [
@@ -12,7 +11,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {path: 'product/:id', component: ProductComponent, pathMatch: 'full'},
-  {path: 'cart', component: CartComponent, pathMatch: 'full'},
+  {
+    path: 'cart',
+    loadChildren: () => import('./features/cart/cart.module').then(m => m.CartModule),
+    pathMatch: 'full'
+  },
   {
     path: 'backoffice',
     loadChildren: () => import('./features/backoffice/backoffice.module').then(m => m.BackofficeModule),
