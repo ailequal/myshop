@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {MainPage} from "./shared/model/page";
+import {Page} from "./core/model/page";
 
 @Component({
   selector: 'ac-root',
   template: `
-    <ac-navbar-main [home]="home" [pages]="pages"></ac-navbar-main>
+    <ac-navbar [home]="home" [pages]="pages"></ac-navbar>
 
     <router-outlet></router-outlet>
   `,
@@ -13,22 +13,22 @@ import {MainPage} from "./shared/model/page";
 export class AppComponent implements OnInit {
 
   // TODO: These properties should be probably stored somewhere else better...
-  home: MainPage = {
+  home: Page = {
     slug: 'shop',
     title: 'Shop',
-    main: '<i class="fab fa-shopify"></i> My Shop'
+    label: '<i class="fab fa-shopify"></i> My Shop'
   };
 
-  pages: MainPage[] = [
+  pages: Page[] = [
     {
       slug: 'backoffice',
       title: 'Backoffice',
-      main: '<i class="fas fa-lock"></i> Admin'
+      label: '<i class="fas fa-lock"></i> Admin'
     },
     {
       slug: 'cart',
       title: 'Cart',
-      main: '<i class="fas fa-cart-plus"></i> Cart'
+      label: '<i class="fas fa-cart-plus"></i> Cart'
     },
   ];
 

@@ -47,7 +47,6 @@ export abstract class NavbarComponent<T extends Page> implements OnInit {
             class="btn btn-outline-dark mx-2"
           >
             <span [innerHTML]="page.main"></span>
-            <!--        {{page.main}}-->
           </button>
         </div>
       </div>
