@@ -4,8 +4,6 @@ import {SubPage} from "../../shared/model/page";
 @Component({
   selector: 'ac-backoffice',
   template: `
-    <h2>Backoffice</h2>
-
     <ac-navbar-sub [pages]="pages"></ac-navbar-sub>
 
     <router-outlet></router-outlet>
