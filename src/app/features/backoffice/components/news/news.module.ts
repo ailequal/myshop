@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {NewsRoutingModule} from './news-routing.module';
+import {FormsModule} from "@angular/forms";
 
-import { NewsRoutingModule } from './news-routing.module';
-import { NewsComponent } from './news.component';
-
+import {NewsComponent} from './news.component';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,9 @@ import { NewsComponent } from './news.component';
   ],
   imports: [
     CommonModule,
-    NewsRoutingModule
+    NewsRoutingModule,
+    FormsModule
   ]
 })
-export class NewsModule { }
+export class NewsModule {
+}
