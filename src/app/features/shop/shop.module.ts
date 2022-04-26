@@ -25,13 +25,6 @@ import {ShopItemNewsletterComponent} from "./components/shop-item-newsletter.com
     ShopRoutingModule,
     FormsModule,
     SharedModule
-  ],
-  exports: [
-    ShopComponent,
-    ShopHeroComponent,
-    ShopItemCardComponent,
-    ShopItemNewsComponent,
-    ShopItemNewsletterComponent
   ]
 })
 export class ShopModule {
