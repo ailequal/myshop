@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MainPage, Page, SubPage} from "../model/page";
 
 // Unfortunately, there is no way in Angular to create an instance of a generic component.
@@ -87,10 +87,8 @@ export class NavbarMainComponent extends NavbarComponent<MainPage> {
     <div class="navigation m-3" style="display: flex; justify-content: center; align-content: center">
       <button
         *ngFor="let page of pages"
-        (click)="selectPage.emit(page)"
-        [ngClass]="{
-        'bg-warning': page.slug === activePage.slug
-        }"
+        [routerLink]="'/' + page.slug"
+        routerLinkActive="bg-warning"
       >
         {{page.title | uppercase}}
         <!--        {{page.sub}}-->
@@ -101,11 +99,6 @@ export class NavbarMainComponent extends NavbarComponent<MainPage> {
 })
 export class NavbarSubComponent extends NavbarComponent<SubPage> {
 
-  @Input() activePage!: SubPage;
-
-  @Output() selectPage: EventEmitter<SubPage> = new EventEmitter<SubPage>();
-
-  // TODO: Somehow, the sub navbar will need to handle the sub routes properly!!
   // TODO: Pass the active button style class as a property for the component.
 
   /**
@@ -120,10 +113,6 @@ export class NavbarSubComponent extends NavbarComponent<SubPage> {
    */
   override ngOnInit(): void {
     super.ngOnInit();
-
-    if (!this.activePage) {
-      throw new Error('The activePage property must be passed into the "NavbarSubComponent".');
-    }
   }
 
 }

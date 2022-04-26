@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {BackofficeComponent} from "./backoffice.component";
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
     loadChildren: () => import('./components/products/products.module').then(m => m.ProductsModule),
     pathMatch: 'full'
   },
-  {path: '', redirectTo: 'hero', pathMatch: 'full'}
+  {path: '', component: BackofficeComponent, pathMatch: 'full'}
 ];
 
 @NgModule({
