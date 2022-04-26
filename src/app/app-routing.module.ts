@@ -1,15 +1,17 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {ProductComponent} from "./features/product/product.component";
-
 const routes: Routes = [
   {
     path: 'shop',
     loadChildren: () => import('./features/shop/shop.module').then(m => m.ShopModule),
     pathMatch: 'full'
   },
-  {path: 'product/:id', component: ProductComponent, pathMatch: 'full'},
+  {
+    path: 'product/:id',
+    loadChildren: () => import('./features/product/product.module').then(m => m.ProductModule),
+    pathMatch: 'full'
+  },
   {
     path: 'cart',
     loadChildren: () => import('./features/cart/cart.module').then(m => m.CartModule),
