@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Hero} from "../../../shared/model/hero";
+import {Hero} from "../../../model/hero";
 
 @Component({
   selector: 'ac-shop-hero',

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SubPage} from "../../shared/model/page";
+import {SubPage} from "../../model/page";
 
 @Component({
   selector: 'ac-backoffice',
@@ -17,17 +17,17 @@ export class BackofficeComponent implements OnInit {
     {
       slug: '/backoffice/hero',
       title: 'Hero',
-      sub: 'The hero section.'
+      label: 'The hero section.'
     },
     {
       slug: '/backoffice/news',
       title: 'News',
-      sub: 'The news section.'
+      label: 'The news section.'
     },
     {
       slug: '/backoffice/products',
       title: 'Products',
-      sub: 'The products section.'
+      label: 'The products section.'
     }
   ];
 

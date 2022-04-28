@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {NotificationService} from './notification.service';
-import {CartItem} from '../model/cart-item';
-import {Product} from '../../shared/model/product';
+import {CartItem} from '../../model/cart-item';
+import {Product} from '../../model/product';
 
 @Injectable({
   providedIn: 'root'

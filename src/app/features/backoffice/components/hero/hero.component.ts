@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Hero} from "../../../../shared/model/hero";
+import {Hero} from "../../../../model/hero";
 import {HttpClient} from "@angular/common/http";
 import {NgForm, NgModel} from "@angular/forms";
 

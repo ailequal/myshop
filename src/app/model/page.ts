@@ -1,13 +1,15 @@
 export interface Page {
   slug: string,
-  title: string
+  title: string,
+  label: string
 }
 
 export interface MainPage extends Page {
   slug: 'shop' | 'cart' | 'backoffice',
-  main: string
+  main?: string
 }
 
 export interface SubPage extends Page {
-  sub: string
+  slug: string
+  sub?: string
 }

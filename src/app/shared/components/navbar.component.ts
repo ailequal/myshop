@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MainPage, Page, SubPage} from "../model/page";
+import {MainPage, Page, SubPage} from "../../model/page";
 
 // Unfortunately, there is no way in Angular to create an instance of a generic component.
 // To get around this limitation, we need to create a non-generic component for each derived type we want to use it with.

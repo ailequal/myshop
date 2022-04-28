@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CartService} from '../../core/services/cart.service';
-import {Hero} from "../../shared/model/hero";
-import {News} from "../../shared/model/news";
-import {Product} from "../../shared/model/product";
+import {Hero} from "../../model/hero";
+import {News} from "../../model/news";
+import {Product} from "../../model/product";
 
 @Component({
   selector: 'ac-shop',

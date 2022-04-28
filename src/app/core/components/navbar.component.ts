@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Page} from "../model/page";
+import {MainPage} from "../../model/page";
 
 @Component({
   selector: 'ac-navbar',
@@ -29,9 +29,9 @@ import {Page} from "../model/page";
 })
 export class NavbarComponent implements OnInit {
 
-  @Input() pages!: Page[];
+  @Input() pages!: MainPage[];
 
-  @Input() home!: Page;
+  @Input() home!: MainPage;
 
   // TODO: Usually the main navbar is always declared inside the core module, since it's used only once...
   //  This is a copy from "shared/navbar" that does the some stuff. Inside shared we have another reusable navbar.

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {NgForm, NgModel} from "@angular/forms";
-import {Product} from '../../../../shared/model/product';
+import {Product} from '../../../../model/product';
 
 @Component({
   selector: 'ac-products',

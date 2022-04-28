@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {News} from "../../../../shared/model/news";
+import {News} from "../../../../model/news";
 import {HttpClient} from "@angular/common/http";
 import {NgForm, NgModel} from "@angular/forms";
 

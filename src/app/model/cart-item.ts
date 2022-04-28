@@ -1,4 +1,4 @@
-import {Product} from "../../shared/model/product";
+import {Product} from "./product";
 
 export interface CartItem {
   product: Product;

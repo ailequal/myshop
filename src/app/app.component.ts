@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Page} from "./core/model/page";
+import {MainPage} from "./model/page";
 
 @Component({
   selector: 'ac-root',
@@ -13,13 +13,13 @@ import {Page} from "./core/model/page";
 export class AppComponent implements OnInit {
 
   // TODO: These properties should be probably stored somewhere else better...
-  home: Page = {
+  home: MainPage = {
     slug: 'shop',
     title: 'Shop',
     label: '<i class="fab fa-shopify"></i> My Shop'
   };
 
-  pages: Page[] = [
+  pages: MainPage[] = [
     {
       slug: 'backoffice',
       title: 'Backoffice',
