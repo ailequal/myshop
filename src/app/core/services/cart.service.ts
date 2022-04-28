@@ -53,6 +53,10 @@ export class CartService {
     }, 0)
   }
 
+  getTotalQty(): number {
+    return this.items.length
+  }
+
   logItems(): void {
     console.log(this.items)
   }

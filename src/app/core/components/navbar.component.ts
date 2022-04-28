@@ -27,7 +27,7 @@ import {MainPage} from "../../model/page";
             class="btn btn-outline-dark mx-2"
           >
             <span [innerHTML]="cart.label"></span>
-            <span>(€ {{cartService.getTotalCartAmount()}} - {{cartService.items.length}})</span>
+            <span>(€ {{cartService.getTotalCartAmount()}} - {{cartService.getTotalQty()}})</span>
           </button>
         </div>
       </div>
