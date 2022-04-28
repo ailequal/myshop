@@ -47,6 +47,11 @@ export class CartService {
   }
 
   incrementQuantity(itemToUpdate: CartItem): void {
+    if (itemToUpdate.quantity >= 5) {
+      this.notificationService.show('Max product quantity added.');
+      return;
+    }
+
     if (!this.items.length) {
       this.items = [itemToUpdate]
       return;
@@ -56,15 +61,29 @@ export class CartService {
       if (item.product.id !== itemToUpdate.product.id || item.color !== itemToUpdate.color)
         return item
 
-      item.quantity++
-      return item
+      return {...item, quantity: ++item.quantity}
     })
 
     this.notificationService.show('Incremented product quantity.');
   }
 
   decrementQuantity(itemToUpdate: CartItem): void {
-    console.log(itemToUpdate)
+    if (itemToUpdate.quantity <= 1) {
+      this.notificationService.show('Minimum product quantity added.');
+      return;
+    }
+
+    if (!this.items.length)
+      return;
+
+    this.items = this.items.map(item => {
+      if (item.product.id !== itemToUpdate.product.id || item.color !== itemToUpdate.color)
+        return item
+
+      return {...item, quantity: --item.quantity}
+    })
+
+    this.notificationService.show('Decremented product quantity.');
   }
 
   orderNow(formData: any): void {
