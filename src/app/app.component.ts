@@ -4,7 +4,7 @@ import {MainPage} from "./model/page";
 @Component({
   selector: 'ac-root',
   template: `
-    <ac-navbar [home]="home" [pages]="pages"></ac-navbar>
+    <ac-navbar [home]="home" [cart]="cart" [pages]="pages"></ac-navbar>
 
     <router-outlet></router-outlet>
   `,
@@ -19,17 +19,18 @@ export class AppComponent implements OnInit {
     label: '<i class="fab fa-shopify"></i> My Shop'
   };
 
+  cart: MainPage = {
+    slug: 'cart',
+    title: 'Cart',
+    label: '<i class="fas fa-cart-plus"></i> Cart'
+  }
+
   pages: MainPage[] = [
     {
       slug: 'backoffice',
       title: 'Backoffice',
       label: '<i class="fas fa-lock"></i> Admin'
-    },
-    {
-      slug: 'cart',
-      title: 'Cart',
-      label: '<i class="fas fa-cart-plus"></i> Cart'
-    },
+    }
   ];
 
   /**

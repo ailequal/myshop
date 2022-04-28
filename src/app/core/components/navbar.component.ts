@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {CartService} from '../services/cart.service';
 import {MainPage} from "../../model/page";
 
 @Component({
@@ -19,6 +20,15 @@ import {MainPage} from "../../model/page";
           >
             <span [innerHTML]="page.label"></span>
           </button>
+
+          <button
+            [routerLink]="'/' + cart.slug"
+            routerLinkActive="bg-success"
+            class="btn btn-outline-dark mx-2"
+          >
+            <span [innerHTML]="cart.label"></span>
+            <span>(€ {{cartService.getTotalCartAmount()}} - {{cartService.items.length}})</span>
+          </button>
         </div>
       </div>
     </nav>
@@ -29,9 +39,11 @@ import {MainPage} from "../../model/page";
 })
 export class NavbarComponent implements OnInit {
 
-  @Input() pages!: MainPage[];
-
   @Input() home!: MainPage;
+
+  @Input() cart!: MainPage;
+
+  @Input() pages!: MainPage[];
 
   // TODO: Usually the main navbar is always declared inside the core module, since it's used only once...
   //  This is a copy from "shared/navbar" that does the some stuff. Inside shared we have another reusable navbar.
@@ -40,19 +52,23 @@ export class NavbarComponent implements OnInit {
   /**
    * The constructor method.
    */
-  constructor() {
+  constructor(public cartService: CartService) {
   }
 
   /**
    * The ngOnInit method.
    */
   ngOnInit(): void {
-    if (!this.pages) {
-      throw new Error('The pages property must be passed into the "NavbarComponent".');
-    }
-
     if (!this.home) {
       throw new Error('The home property must be passed into the "NavbarComponent".');
+    }
+
+    if (!this.cart) {
+      throw new Error('The cart property must be passed into the "NavbarComponent".');
+    }
+
+    if (!this.pages) {
+      throw new Error('The pages property must be passed into the "NavbarComponent".');
     }
   }
 
