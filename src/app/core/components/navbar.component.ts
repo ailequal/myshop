@@ -34,6 +34,8 @@ import {MainPage} from "../../model/page";
     </nav>
 
     <ac-notification></ac-notification>
+
+    <ac-navbar-cart-panel></ac-navbar-cart-panel>
   `,
   styles: [],
 })
