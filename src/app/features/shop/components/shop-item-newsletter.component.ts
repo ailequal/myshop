@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {NotificationService} from "../../../core/services/notification.service";
 
 @Component({
   selector: 'ac-shop-item-newsletter',
@@ -49,7 +50,7 @@ export class ShopItemNewsletterComponent implements OnInit {
   /**
    * The constructor method.
    */
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private notificationService: NotificationService) {
   }
 
   /**
@@ -79,7 +80,7 @@ export class ShopItemNewsletterComponent implements OnInit {
           if (v.response === 'ok') {
             this.subscribed = email
             localStorage.setItem('subscribed', email)
-            alert('Subscribed successfully!!')
+            this.notificationService.show('Subscribed successfully!!')
           }
         },
         error: (e) => console.log(e),
