@@ -20,7 +20,7 @@ export class NotificationService {
    */
   show(message: string): void {
     this.message = message;
-    setTimeout(this.hide, 3000);
+    setTimeout(() => this.hide(), 3000);
   }
 
   /**

@@ -22,6 +22,8 @@ import {Page} from "../model/page";
         </div>
       </div>
     </nav>
+
+    <ac-notification></ac-notification>
   `,
   styles: [],
 })

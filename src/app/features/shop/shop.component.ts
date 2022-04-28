@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {NotificationService} from '../../core/services/notification.service';
 import {Hero} from "../../shared/model/hero";
 import {News} from "../../shared/model/news";
 import {Product} from "../../shared/model/product";
@@ -50,7 +51,10 @@ export class ShopComponent implements OnInit {
    * The constructor method.
    * The HttpClient instance is injected.
    */
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    public notificationService: NotificationService
+  ) {
   }
 
   /**
@@ -86,6 +90,7 @@ export class ShopComponent implements OnInit {
    */
   addToCartHandler(params: { product: Product; color: string | null }): void {
     console.log(params.product, params.color)
+    this.notificationService.show('Product added to the cart.')
   }
 
 }
