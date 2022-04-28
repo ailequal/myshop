@@ -22,8 +22,19 @@ export class CartService {
     if (!selectedColor)
       return;
 
-    this.items = [...this.items, {product: itemToAdd, quantity: 1, color: selectedColor}]
+    // Check if the item (product and color pair) has been already added to the cart.
+    const itemFound: CartItem | undefined = this.items.find(item => {
+      return item.product.id === itemToAdd.id && item.color === selectedColor
+    });
 
+    if (itemFound) {
+      // The pair already exists: increment the quantity.
+      this.incrementQuantity(itemFound);
+      return;
+    }
+
+    // The pair does not exist yet: add it to the cart once.
+    this.items = [...this.items, {product: itemToAdd, quantity: 1, color: selectedColor}]
     this.notificationService.show('Product added to the cart.');
   }
 
@@ -36,7 +47,20 @@ export class CartService {
   }
 
   incrementQuantity(itemToUpdate: CartItem): void {
-    console.log(itemToUpdate)
+    if (!this.items.length) {
+      this.items = [itemToUpdate]
+      return;
+    }
+
+    this.items = this.items.map(item => {
+      if (item.product.id !== itemToUpdate.product.id || item.color !== itemToUpdate.color)
+        return item
+
+      item.quantity++
+      return item
+    })
+
+    this.notificationService.show('Incremented product quantity.');
   }
 
   decrementQuantity(itemToUpdate: CartItem): void {
