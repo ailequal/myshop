@@ -21,11 +21,20 @@ export class CartService {
   }
 
   addItem(itemToAdd: Product, selectedColor: string | null): void {
-    console.log(itemToAdd, selectedColor)
+    if (!selectedColor)
+      return;
+
+    this.items = [...this.items, {product: itemToAdd, quantity: 1, color: selectedColor}]
+
+    this.notificationService.show('Product added to the cart.');
   }
 
   removeItem(itemToRemove: CartItem): void {
-    console.log(itemToRemove)
+    this.items = this.items.filter(item => {
+      return !(item.product.id === itemToRemove.product.id && item.color === itemToRemove.color);
+    })
+
+    this.notificationService.show('Product removed from the cart');
   }
 
   incrementQuantity(itemToUpdate: CartItem): void {
@@ -41,7 +50,9 @@ export class CartService {
   }
 
   getTotalCartAmount(): number {
-    return 0;
+    return this.items.reduce((total, item) => {
+      return total + (item.quantity * item.product.price)
+    }, 0)
   }
 
 }
