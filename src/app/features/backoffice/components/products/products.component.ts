@@ -208,7 +208,7 @@ export class ProductsComponent implements OnInit {
   deleteHandler(): void {
     this.http.delete<Product>(`http://localhost:3000/products/${this.selectedProduct?.id}`)
       .subscribe({
-        next: () => {
+        next: (v) => {
           this.products = this.products.filter(p => p.id !== this.selectedProduct?.id);
           this.selectedProduct = null;
           this.colors = [];

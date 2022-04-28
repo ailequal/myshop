@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {NotificationService} from './notification.service';
 import {CartItem} from '../../model/cart-item';
 import {Product} from '../../model/product';
@@ -14,6 +15,7 @@ export class CartService {
    * The constructor method.
    */
   constructor(
+    private http: HttpClient,
     public notificationService: NotificationService
   ) {
   }
@@ -87,7 +89,22 @@ export class CartService {
   }
 
   orderNow(formData: any): void {
-    console.log(formData, this.items)
+    // TODO: Do we really need to set the params??
+    // const params = new HttpParams()
+    //   .set('formData', JSON.stringify(formData))
+    //   .set('items', JSON.stringify(this.items));
+
+    this.http.post<any>('http://localhost:3000/orderNow', {formData: formData, items: this.items})
+      .subscribe(
+        {
+          next: (v) => {
+            this.clear()
+            this.notificationService.show('Your order has been submitted. Thank you!')
+          },
+          error: (e) => console.log(e),
+          complete: () => console.log('Completed http.post<any>().')
+        }
+      )
   }
 
   getTotalCartAmount(): number {
@@ -98,6 +115,10 @@ export class CartService {
 
   getTotalQty(): number {
     return this.items.length
+  }
+
+  clear(): void {
+    this.items = []
   }
 
   logItems(): void {

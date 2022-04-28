@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from "@angular/router";
+import {HttpClientModule} from "@angular/common/http";
 
 import {NavbarComponent} from "./components/navbar.component";
 import { NotificationComponent } from './components/notification.component';
@@ -12,7 +13,8 @@ import { NotificationComponent } from './components/notification.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   exports: [
     NavbarComponent

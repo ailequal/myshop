@@ -162,7 +162,7 @@ export class NewsComponent implements OnInit {
   deleteHandler(): void {
     this.http.delete<News>(`http://localhost:3000/news/${this.selectedNews?.id}`)
       .subscribe({
-        next: () => {
+        next: (v) => {
           this.data = this.data.filter(n => n.id !== this.selectedNews?.id);
           this.selectedNews = null;
         },

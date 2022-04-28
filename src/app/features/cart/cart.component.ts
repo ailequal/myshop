@@ -230,7 +230,7 @@ export class CartComponent implements OnInit {
    * @param formData
    */
   submitHandler(formData: any) {
-    console.log(formData)
+    this.cartService.orderNow(formData)
   }
 
 }
