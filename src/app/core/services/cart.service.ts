@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {NotificationService} from './notification.service';
 import {CartItem} from '../model/cart-item';
 import {Product} from '../../shared/model/product';
@@ -15,8 +14,7 @@ export class CartService {
    * The constructor method.
    */
   constructor(
-    private http: HttpClient,
-    private notificationService: NotificationService
+    public notificationService: NotificationService
   ) {
   }
 
@@ -53,6 +51,10 @@ export class CartService {
     return this.items.reduce((total, item) => {
       return total + (item.quantity * item.product.price)
     }, 0)
+  }
+
+  logItems(): void {
+    console.log(this.items)
   }
 
 }
