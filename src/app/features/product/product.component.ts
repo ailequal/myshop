@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import {CartService} from '../../core/services/cart.service';
 import {Product} from '../../model/product';
 
 @Component({
@@ -59,7 +60,8 @@ export class ProductComponent implements OnInit {
    */
   constructor(
     private http: HttpClient,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public cartService: CartService
   ) {
   }
 
@@ -82,7 +84,10 @@ export class ProductComponent implements OnInit {
    * Add the current product variation to the cart.
    */
   addToCartHandler(): void {
-    console.log(this.product, this.selectedColor);
+    if (!this.product || !this.selectedColor)
+      return;
+
+    this.cartService.addItem(this.product, this.selectedColor);
   }
 
 }
