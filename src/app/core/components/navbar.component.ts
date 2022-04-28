@@ -25,6 +25,7 @@ import {MainPage} from "../../model/page";
             [routerLink]="'/' + cart.slug"
             routerLinkActive="bg-success"
             class="btn btn-outline-dark mx-2"
+            (mouseover)="showCartPreview = true"
           >
             <span [innerHTML]="cart.label"></span>
             <span>(<b>€</b> {{cartService.getTotalCartAmount()}} - <b>QTY</b> {{cartService.getTotalQty()}})</span>
@@ -35,7 +36,10 @@ import {MainPage} from "../../model/page";
 
     <ac-notification></ac-notification>
 
-    <ac-navbar-cart-panel></ac-navbar-cart-panel>
+    <ac-navbar-cart-panel
+      *ngIf="showCartPreview"
+      (mouseleave)="showCartPreview = false"
+    ></ac-navbar-cart-panel>
   `,
   styles: [],
 })
@@ -46,6 +50,8 @@ export class NavbarComponent implements OnInit {
   @Input() cart!: MainPage;
 
   @Input() pages!: MainPage[];
+
+  showCartPreview: boolean = false;
 
   // TODO: Usually the main navbar is always declared inside the core module, since it's used only once...
   //  This is a copy from "shared/navbar" that does the some stuff. Inside shared we have another reusable navbar.
