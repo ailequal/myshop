@@ -3,10 +3,12 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from "@angular/router";
 
 import {NavbarComponent} from "./components/navbar.component";
+import { NotificationComponent } from './components/notification.component';
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,
