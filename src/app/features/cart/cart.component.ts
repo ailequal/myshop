@@ -33,15 +33,25 @@ import {CartService} from "../../core/services/cart.service";
               *ngFor="let item of cartService.items"
               class="list-group-item d-flex justify-content-between lh-sm"
             >
-              <div>
-                <i class="fas fa-trash fa-2x me-2" (click)="cartService.removeItem(item)"></i>
-              </div>
-
-              <div class="flex-grow-1">
+              <div class="flex-grow-1 d-flex justify-content-center align-items-center me-2">
                 <h6 class="my-0">{{item.product.label}} - {{item.color}}</h6>
-                <small class="text-muted">
+                <small class="text-muted" style="width: 70px;">
                   € {{item.product.price * item.quantity}}
                 </small>
+              </div>
+
+              <span class="d-flex justify-content-center align-items-center text-muted">
+                <button class="bg-dark text-white icon-circle-sm" (click)="cartService.decrementQuantity(item)">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <span class="h mx-2">{{item.quantity}}</span>
+                <button class="bg-dark text-white icon-circle-sm" (click)="cartService.incrementQuantity(item)">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </span>
+
+              <div class="d-flex justify-content-center align-items-center">
+                <i class="fas fa-trash fa-2x ms-2" (click)="cartService.removeItem(item)"></i>
               </div>
             </li>
           </ul>
