@@ -74,6 +74,14 @@
   "newsletter": {
     "response": "ok"
   },
+  "support": [
+    {
+      "name": "Lucas",
+      "email": "lucas@earth.org",
+      "subject": "product-support",
+      "message": "I guys, I cannot add a new product from the backoffice interface. I have tried multiple times without any luck. Could you help me?"
+    }
+  ],
   "orderNow": {
     "response": "ok"
   }
