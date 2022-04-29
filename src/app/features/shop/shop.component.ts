@@ -16,14 +16,15 @@ import {Product} from "../../model/product";
       <!--cards container-->
       <div class="row row-cols-1 row-cols-lg-2  row-cols-xl-3 mt-5">
         <!--cards loop-->
-        <div class="col mb-3" *ngFor="let product of products">
-          <ac-shop-item-card
-            *ngIf="product.visibility"
-            [product]="product"
-            (addToCart)="addToCartHandler($event)"
-          >
-          </ac-shop-item-card>
-        </div>
+        <ng-container *ngFor="let product of products">
+          <div class="col mb-3" *ngIf="product.visibility">
+            <ac-shop-item-card
+              [product]="product"
+              (addToCart)="addToCartHandler($event)"
+            >
+            </ac-shop-item-card>
+          </div>
+        </ng-container>
       </div>
 
       <!--news container-->
