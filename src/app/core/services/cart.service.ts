@@ -99,7 +99,7 @@ export class CartService {
         {
           next: (v) => {
             this.clear()
-            this.notificationService.show('Your order has been submitted. Thank you!')
+            this.notificationService.show('Your order has been submitted. Thank you!', 5)
           },
           error: (e) => console.log(e),
           complete: () => console.log('Completed http.post<any>().')

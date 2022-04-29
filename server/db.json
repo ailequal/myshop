@@ -76,6 +76,7 @@
   },
   "support": [
     {
+      "id": 1,
       "name": "Lucas",
       "email": "lucas@earth.org",
       "subject": "product-support",

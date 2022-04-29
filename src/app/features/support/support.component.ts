@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {NgForm, NgModel} from "@angular/forms";
+import {NotificationService} from "../../core/services/notification.service";
+import {Support} from "../../model/support";
 
 @Component({
   selector: 'ac-support',
@@ -66,7 +68,10 @@ export class SupportComponent implements OnInit {
   /**
    * The constructor method.
    */
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    public notificationService: NotificationService
+  ) {
   }
 
   /**
@@ -95,7 +100,15 @@ export class SupportComponent implements OnInit {
    * @param form
    */
   onSubmit(form: NgForm) {
-    console.log(form.value)
+    this.http.post<Support>('http://localhost:3000/support', form.value)
+      .subscribe({
+        next: (v) => {
+          this.notificationService.show('Your request has been submitted. We\'ll contact you ASAP.', 5)
+          form.reset();
+        },
+        error: (e) => console.log(e),
+        complete: () => console.log('Completed http.post<Support>().')
+      })
   }
 
 }

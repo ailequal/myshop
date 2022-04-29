@@ -17,13 +17,14 @@ export class NotificationService {
    * Show the message.
    *
    * @param message
+   * @param time
    */
-  show(message: string): void {
+  show(message: string, time: number = 1.5): void {
     if (this.message) // TODO: The notification service should implement some sort of queue feature for multiple notifications.
       return; // Do not set a new message and setTimeout(), if a message is already being displayed.
 
     this.message = message;
-    setTimeout(() => this.hide(), 1500);
+    setTimeout(() => this.hide(), time * 1000);
   }
 
   /**

@@ -80,7 +80,7 @@ export class ShopItemNewsletterComponent implements OnInit {
           if (v.response === 'ok') {
             this.subscribed = email
             localStorage.setItem('subscribed', email)
-            this.notificationService.show('Subscribed successfully!!')
+            this.notificationService.show('Subscribed successfully!!', 5)
           }
         },
         error: (e) => console.log(e),
