@@ -84,6 +84,12 @@ import {Product} from '../../../../model/product';
               </div>
             </div>
 
+            <div class="form-check my-3">
+              <input id="aaa" class="form-check-input" type="checkbox" [ngModel]="selectedProduct?.visibility"
+                     value="show" name="visibility" #visibilityRef="ngModel">
+              <label class="form-check-label" for="aaa">Show the product</label>
+            </div>
+
             <hr>
 
             <div class="btn-group">
