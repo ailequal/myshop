@@ -28,6 +28,11 @@ export class BackofficeComponent implements OnInit {
       slug: '/backoffice/products',
       title: 'Products',
       label: 'The products section.'
+    },
+    {
+      slug: '/backoffice/support',
+      title: 'Support',
+      label: 'The support requests section.'
     }
   ];
 

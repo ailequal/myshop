@@ -21,6 +21,11 @@ const routes: Routes = [
         path: 'products',
         loadChildren: () => import('./components/products/products.module').then(m => m.ProductsModule),
         pathMatch: 'full'
+      },
+      {
+        path: 'support',
+        loadChildren: () => import('./components/support/support.module').then(m => m.SupportModule),
+        pathMatch: 'full'
       }
     ],
     // pathMatch: 'full' // It's disabled, since there are sub routes!!
