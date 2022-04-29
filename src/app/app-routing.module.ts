@@ -23,6 +23,11 @@ const routes: Routes = [
     // pathMatch: 'full' // It's disabled, since there are sub routes!!
   },
   {
+    path: 'support',
+    loadChildren: () => import('./features/support/support.module').then(m => m.SupportModule),
+    pathMatch: 'full'
+  },
+  {
     path: 'page-not-found',
     loadChildren: () => import('./features/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule),
     pathMatch: 'full'

@@ -30,6 +30,11 @@ export class AppComponent implements OnInit {
       slug: 'backoffice',
       title: 'Backoffice',
       label: '<i class="fas fa-lock"></i> Admin'
+    },
+    {
+      slug: 'support',
+      title: 'Support',
+      label: '<i class="fa-solid fa-square-envelope"></i> Support'
     }
   ];
 
