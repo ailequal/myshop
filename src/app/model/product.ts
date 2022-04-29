@@ -8,5 +8,5 @@ export interface Product {
   display: number;
   price: number;
   colors: string[];
-  visibility: 'show' | 'hide'
+  visibility: boolean
 }

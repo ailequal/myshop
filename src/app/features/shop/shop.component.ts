@@ -18,6 +18,7 @@ import {Product} from "../../model/product";
         <!--cards loop-->
         <div class="col mb-3" *ngFor="let product of products">
           <ac-shop-item-card
+            *ngIf="product.visibility"
             [product]="product"
             (addToCart)="addToCartHandler($event)"
           >

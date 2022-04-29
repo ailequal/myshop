@@ -85,9 +85,11 @@ import {Product} from '../../../../model/product';
             </div>
 
             <div class="form-check my-3">
-              <input id="aaa" class="form-check-input" type="checkbox" [ngModel]="selectedProduct?.visibility"
-                     value="show" name="visibility" #visibilityRef="ngModel">
-              <label class="form-check-label" for="aaa">Show the product</label>
+              <input id="visibility-checkbox" class="form-check-input" type="checkbox"
+                     [ngModel]="selectedProduct?.visibility"
+                     name="visibility"
+              >
+              <label class="form-check-label" for="visibility-checkbox">Show the product in the shop.</label>
             </div>
 
             <hr>
@@ -117,7 +119,7 @@ export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
 
-  colors: string[] = []; // TODO: Colors are handled badly (for now only)!!
+  colors: string[] = [];
 
   selectedProduct: Product | null = null;
 

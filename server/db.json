@@ -34,7 +34,8 @@
         "yellow",
         "aquamarine",
         "deepskyblue"
-      ]
+      ],
+      "visibility": true
     },
     {
       "id": 3,
@@ -48,7 +49,8 @@
       "colors": [
         "dimgray",
         "darkgray"
-      ]
+      ],
+      "visibility": true
     },
     {
       "id": 4,
@@ -65,7 +67,8 @@
         "lightgreen",
         "midnightblue",
         "mediumpurple"
-      ]
+      ],
+      "visibility": true
     }
   ],
   "newsletter": {
