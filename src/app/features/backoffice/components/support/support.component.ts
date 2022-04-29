@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Support} from "../../../../model/support";
-import {Hero} from "../../../../model/hero";
 
 @Component({
   selector: 'ac-support',
